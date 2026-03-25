@@ -1,546 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>B8N — Strategic Partner & Investor</title>
-<meta name="description" content="B8N acquires and grows Australia's mid-market industrial businesses. Capital, AI-powered growth, and hands-on operational expertise.">
-<meta property="og:title" content="B8N — Strategic Partner & Investor">
-<meta property="og:description" content="We invest in Australia's industrial mid-market. $3–50M revenue businesses.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B8N — Private Equity for Australian SMEs | $1–10M EBITDA</title>
+<meta name="description" content="B8N is an Australian private equity fund for businesses at $1–10M EBITDA. Sell your business, find a growth partner, or explore succession planning.">
+<meta name="keywords" content="sell my business Australia, private equity SME Australia, mid-market PE fund, business succession planning, EBITDA valuation">
+<meta property="og:title" content="B8N — Private Equity for Australian SMEs">
+<meta property="og:description" content="Sell your business to operators who build, not just buy. Committed capital, hands-on execution.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231e4d7b'/><text x='16' y='22' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='900' fill='white'>B</text></svg>">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',Roboto,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
-#root{min-height:100vh}
-input,select{font-family:inherit}
-::selection{background:#1e4d7b;color:#fff}
-</style>
+<meta property="og:url" content="https://www.b8n.com">
+<link rel="canonical" href="https://www.b8n.com">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{}}}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"B8N","url":"https://www.b8n.com","description":"Australian private equity fund for businesses at $1–10M EBITDA.","address":{"@type":"PostalAddress","streetAddress":"Level 4, 233 Castlereagh St","addressLocality":"Sydney","addressRegion":"NSW","postalCode":"2000","addressCountry":"AU"},"telephone":"+61410964458","foundingDate":"2025","sameAs":["https://www.linkedin.com/company/b8n-capital","https://www.linkedin.com/in/markusbinder","https://www.linkedin.com/in/leopoldneuerburg"],"founders":[{"@type":"Person","name":"Markus Binder"},{"@type":"Person","name":"Leopold Neuerburg"}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;color:#1a1a1a;line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased}
+
+/* Page transition */
+.page-tr{transition:opacity .18s ease,transform .18s ease}
+.page-tr--in{opacity:1;transform:translateY(0)}
+.page-tr--out{opacity:0;transform:translateY(8px)}
+
+/* Hero grid bg */
+.hero-bg{background-image:radial-gradient(circle at 1px 1px,rgba(15,23,42,.03) 1px,transparent 0);background-size:32px 32px}
+
+/* Dark section noise */
+.dark-section{background-color:#0a1f3d;position:relative}
+.dark-section::after{content:'';position:absolute;inset:0;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none}
+
+/* CTA block noise */
+.cta-block{position:relative;overflow:hidden}
+.cta-block::after{content:'';position:absolute;inset:0;border-radius:1rem;opacity:.3;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none}
+
+/* Leo card glow */
+.leo-card{box-shadow:0 0 0 1px rgba(14,116,144,.08),0 4px 16px rgba(14,116,144,.04)}
+
+/* Button lift */
+.fm-btn-lift{transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease}
+.fm-btn-lift:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 6px 20px rgba(10,31,61,.1)}
+.fm-btn-lift:active{transform:translateY(0) scale(.98);box-shadow:none;transition-duration:.1s}
+
+/* Button press */
+.fm-btn-press{transition:transform .15s cubic-bezier(.34,1.56,.64,1)}
+.fm-btn-press:active{transform:scale(.95)}
+
+/* Card lift */
+.fm-card-lift{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,border-color .2s ease}
+.fm-card-lift:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(10,31,61,.06),0 2px 6px rgba(10,31,61,.03)}
+
+/* Touch: disable hover */
+@media(hover:none){.fm-btn-lift:hover,.fm-card-lift:hover{transform:none!important;box-shadow:none!important}}
+
+/* Pulse */
+@keyframes fm-pulse-ring{0%{transform:scale(1);opacity:.7}70%{transform:scale(2.2);opacity:0}100%{transform:scale(2.2);opacity:0}}
+.fm-pulse{animation:fm-pulse-ring 2s cubic-bezier(0,0,.2,1) infinite}
+
+/* Timeline dot */
+.tl-dot{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease}
+.group:hover .tl-dot{transform:scale(1.3);box-shadow:0 0 0 4px rgba(30,77,123,.1)}
+
+/* Step enter */
+@keyframes fm-step-enter{0%{opacity:0;transform:translateX(14px)}100%{opacity:1;transform:translateX(0)}}
+.fm-step-enter{animation:fm-step-enter .3s cubic-bezier(.16,1,.3,1) both}
+
+/* Accordion */
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.acc-body>*{overflow:hidden}
+.acc-body--open{grid-template-rows:1fr}
+
+/* Nav responsive */
+.nav-links{display:flex}
+.burger{display:none}
+@media(max-width:767px){
+  .burger{display:flex}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:white;flex-direction:column;padding:16px 24px 24px;border-bottom:1px solid #e5e7eb;gap:4px;align-items:stretch;z-index:50;animation:fm-step-enter .3s ease both;box-shadow:0 12px 24px rgba(0,0,0,.06)}
+  .nav-links--open{display:flex}
+}
+
+/* Focus */
+input:focus,select:focus,textarea:focus{outline:none}
+
+/* shadcn replacements */
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:.5rem;font-size:.875rem;font-weight:600;cursor:pointer;transition:background .15s,border-color .15s;border:1.5px solid transparent;line-height:1}
+.btn-default{background:#0f172a;color:#fff;padding:.625rem 1.25rem}.btn-default:hover{background:#1e293b}
+.btn-outline{background:transparent;color:#0f172a;border-color:#d1d5db;padding:.625rem 1.25rem}.btn-outline:hover{background:#f8fafc;border-color:#94a3b8}
+.btn-secondary{background:#f1f5f9;color:#0f172a;padding:.625rem 1.25rem}.btn-secondary:hover{background:#e2e8f0}
+.btn-sm{padding:.4rem .875rem;font-size:.8125rem}
+.btn-lg{padding:.75rem 1.75rem;font-size:.9375rem}
+.btn:disabled{opacity:.5;cursor:default}
+
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:.75rem;overflow:hidden}
+.card-header{padding:1.25rem 1.5rem .75rem}
+.card-content{padding:.75rem 1.5rem 1.25rem}
+.card-title{font-size:1rem;font-weight:700;color:#0f172a;line-height:1.3}
+.card-desc{font-size:.8125rem;color:#64748b;margin-top:.125rem}
+
+.badge{display:inline-flex;align-items:center;border-radius:.25rem;padding:.15rem .625rem;font-size:.6875rem;font-weight:600;line-height:1.4}
+.badge-secondary{background:#f1f5f9;color:#334155}
+.badge-outline{background:transparent;border:1px solid #e2e8f0;color:#64748b}
+
+.separator{height:1px;background:#e5e7eb;border:none;width:100%}
+</style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const {useState,useRef,useMemo}=React;
+const {useState,useEffect,useRef,useCallback} = React;
 
-const SECTORS=[
-  {id:"data_centres",label:"Data centres & cloud",icon:"\u25C6",color:"#1e4d7b",bg:"#e8f2fc",baseMultiple:6.5,marginBonus:0.8,
-   stats:{size:"$4.8B",growth:"+12% CAGR",multiple:"5.5\u20138.0x",deals:3},
-   thesis:"Secular growth driven by AI workloads, cloud migration, and data sovereignty. Australian operators benefit from geographic isolation and regulatory tailwinds.",
-   risks:["High capex","Energy cost exposure","Hyperscaler competition"],
-   trends:["Edge computing demand","Renewable-powered facilities","Government data sovereignty"]},
-  {id:"it_cyber",label:"Managed IT & cybersecurity",icon:"\u25C7",color:"#0e7490",bg:"#ecfeff",baseMultiple:5.5,marginBonus:0.7,
-   stats:{size:"$3.2B",growth:"+9% CAGR",multiple:"4.5\u20137.0x",deals:2},
-   thesis:"Subscription-based revenue with 85%+ gross retention. SMEs outsourcing IT and security compliance. Fragmented market ideal for buy-and-build.",
-   risks:["Talent scarcity","Technology shifts","Customer concentration"],
-   trends:["Zero-trust adoption","Compliance-as-a-service","AI-augmented SOC"]},
-  {id:"essential",label:"Essential services",icon:"\u25CF",color:"#059669",bg:"#ecfdf5",baseMultiple:4.0,marginBonus:0.5,
-   stats:{size:"$8.1B",growth:"+5% CAGR",multiple:"3.5\u20135.5x",deals:4},
-   thesis:"Contracted maintenance with regulatory-driven demand. Fire safety and security require ongoing compliance testing \u2014 predictable cash flows, low churn.",
-   risks:["Labour-intensive","Licensing costs","Geographic constraints"],
-   trends:["IoT monitoring","Integrated facility mgmt","ESG compliance"]},
-  {id:"waste",label:"Waste & environmental",icon:"\u25A0",color:"#d97706",bg:"#fffbeb",baseMultiple:3.8,marginBonus:0.5,
-   stats:{size:"$2.1B",growth:"+4% CAGR",multiple:"3.0\u20135.0x",deals:3},
-   thesis:"Route-density economics with high barriers. Council contracts provide visibility. Fragmented \u2014 ideal for consolidation with margin expansion.",
-   risks:["Regulatory changes","Fleet capex","Contract renewal"],
-   trends:["Circular economy mandates","Smart bin tech","Waste-to-energy"]},
-  {id:"construction",label:"Construction & civil",icon:"\u25B2",color:"#dc2626",bg:"#fef2f2",baseMultiple:3.2,marginBonus:0.4,
-   stats:{size:"$22B",growth:"+3% CAGR",multiple:"2.5\u20134.0x",deals:2},
-   thesis:"$120B+ infrastructure pipeline. Civil operators with specialised capabilities command premium multiples. Capacity-constrained market.",
-   risks:["Revenue volatility","Labour shortages","Material inflation"],
-   trends:["Infrastructure pipeline","Modular construction","Green standards"]},
-];
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const C = {
+  hsPortal: "YOUR_PORTAL_ID",
+  hsFormContact: "YOUR_FORM_GUID",
+  site: "https://www.b8n.com",
+  li: {
+    co: "https://www.linkedin.com/company/b8n-capital",
+    mb: "https://www.linkedin.com/in/markusbinder",
+    ln: "https://www.linkedin.com/in/leopoldneuerburg",
+    dv: "https://www.linkedin.com/in/dorianvonfreyhold",
+    tt: "https://www.linkedin.com/in/tonyta",
+  },
+};
 
-const RECURRING=["0\u201310%","10\u201330%","30\u201350%","50\u201375%","75\u2013100%"];
-const GROWTH=["Declining","Flat (0\u20132%)","Moderate (2\u201310%)","Strong (10\u201320%)","High (20%+)"];
-const OWNER_DEP=["Very high","High","Moderate","Low \u2014 systemised"];
-const YEARS=["< 2 years","2\u20135 years","5\u201310 years","10\u201320 years","20+ years"];
-const REASONS=["Exploring options","Planning exit in 1\u20132 years","Ready to sell now","Looking for growth capital","Succession planning"];
+/* ============================================================
+   SEO
+   ============================================================ */
+const META = {
+  home:{t:"B8N — Private Equity for Australian SMEs | $1–10M EBITDA",d:"Sell your business to operators who build. Committed capital, hands-on execution, proprietary revenue intelligence."},
+  why:{t:"Why B8N | Operator-Led Private Equity Australia",d:"Australia's $1–10M EBITDA businesses deserve better. Operator-led PE with Mittelstand discipline."},
+  build:{t:"How We Build | B8N Operational Playbook",d:"Radically transparent 12-month value creation playbook including Leo revenue intelligence."},
+  thinking:{t:"Insights for Business Owners | B8N",d:"Succession planning, EBITDA valuation guides, and frameworks for Australian business owners."},
+  team:{t:"The Team | B8N",d:"Operators, not consultants. 20+ years transaction experience."},
+  founders:{t:"Sell Your Business | B8N For Business Owners",d:"Your exit, your terms. 12-week completion, fair valuations, partnership that grows your company."},
+  advisers:{t:"For Brokers & Advisers | B8N Deal Criteria",d:"B8N buy box, 48-hour response, one-page PDF. Send us a deal."},
+  contact:{t:"Contact B8N | Start a Conversation",d:"Confidential conversation. We respond within 24 hours."},
+};
 
-function calcVal(d){var sec=SECTORS.find(function(s){return s.id===d.sector});if(!sec||!d.ebitda)return null;var m=sec.baseMultiple;m+=RECURRING.indexOf(d.recurring)*0.3;m+=(GROWTH.indexOf(d.growth)-1)*0.2;var margin=d.revenue>0?(d.ebitda/d.revenue)*100:0;if(margin>30)m+=sec.marginBonus;else if(margin>20)m+=sec.marginBonus*0.5;m-=(3-OWNER_DEP.indexOf(d.ownerDep))*0.3;m+=YEARS.indexOf(d.years)*0.1;m=Math.max(1.5,Math.min(12,m));var c=d.ebitda*m;return{multiple:m,low:c*0.82,central:c,high:c*1.18,margin:margin,sector:sec.label};}
-var fK=function(v){if(!v)return"\u2014";if(v>=1000)return "$"+(v/1000).toFixed(1)+"M";return "$"+Math.round(v)+"K"};
-var commRate=function(v){if(v<=2000)return{r:"5.0%",f:v*0.05};if(v<=5000)return{r:"4.0%",f:v*0.04};if(v<=10000)return{r:"3.0%",f:v*0.03};if(v<=25000)return{r:"2.5%",f:v*0.025};return{r:"2.0%",f:v*0.02}};
-
-var N1="#0a1f3d",N2="#1e4d7b",N3="#2a6aaa",N4="#5a9fd4",N5="#a8cfe8",N6="#edf4fb";
-var inp={width:"100%",padding:"11px 14px",borderRadius:8,border:"1px solid #d1d5db",fontSize:13,background:"#fff",color:"#111",boxSizing:"border-box",outline:"none"};
-var sel=Object.assign({},inp,{appearance:"auto"});
-var btnS={padding:"12px 0",borderRadius:8,border:"none",background:N2,color:"#fff",fontSize:14,fontWeight:600,cursor:"pointer",width:"100%",textAlign:"center"};
-
-function Logo({size=28,light=false}){
-  var c=light?"#fff":N1;
-  return React.createElement("svg",{width:size*2.6,height:size,viewBox:"0 0 104 40",fill:"none",xmlns:"http://www.w3.org/2000/svg"},
-    React.createElement("defs",null,
-      React.createElement("pattern",{id:"w"+size+(light?"l":"d"),patternUnits:"userSpaceOnUse",width:36,height:7,patternTransform:"rotate(-6)"},
-        React.createElement("path",{d:"M0 3.5c4.5-2.5 9-2.5 13.5 0s9 2.5 13.5 0 9-2.5 13.5 0",stroke:light?"rgba(255,255,255,0.12)":"rgba(10,31,61,0.1)",strokeWidth:"1.2",fill:"none"})
-      )
-    ),
-    React.createElement("text",{x:"0",y:"32",fontFamily:"-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif",fontSize:"38",fontWeight:"900",fill:c,letterSpacing:"-1"},"B8N"),
-    React.createElement("rect",{x:"0",y:"0",width:"104",height:"40",fill:"url(#w"+size+(light?"l":"d")+")"})
-  );
+function usePageMeta(page) {
+  useEffect(() => {
+    const m = META[page] || META.home;
+    document.title = m.t;
+    document.querySelector('meta[name="description"]').content = m.d;
+  }, [page]);
 }
 
+/* ============================================================
+   HUBSPOT
+   ============================================================ */
+function getUtm() {
+  try { const p = new URLSearchParams(location.search); return {s:p.get("utm_source")||"",m:p.get("utm_medium")||"",c:p.get("utm_campaign")||""}; } catch { return {s:"",m:"",c:""}; }
+}
+
+async function hsSubmit(guid, fields, src) {
+  const u = getUtm();
+  try {
+    await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${C.hsPortal}/${guid}`, {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ portalId:C.hsPortal, formGuid:guid, fields:[...fields,{name:"hs_lead_source",value:src},{name:"utm_source",value:u.s},{name:"utm_medium",value:u.m},{name:"utm_campaign",value:u.c}], context:{pageUri:location.href,pageName:document.title} })
+    }); return true;
+  } catch(e) { console.error("HS error:",e); return false; }
+}
+
+/* ============================================================
+   ANIMATION
+   ============================================================ */
+function useAnim(cfg={}) {
+  const ref=useRef(null),ran=useRef(false);
+  const {type="fade-up",delay=0,dur=620,stagger=0,kids=false}=cfg;
+  useEffect(()=>{
+    const el=ref.current;if(!el||ran.current)return;
+    const K={"fade-up":[{opacity:0,transform:"translateY(26px)"},{opacity:1,transform:"translateY(0)"}],"slide-l":[{opacity:0,transform:"translateX(-36px)"},{opacity:1,transform:"translateX(0)"}],"slide-r":[{opacity:0,transform:"translateX(36px)"},{opacity:1,transform:"translateX(0)"}],"scale":[{opacity:0,transform:"scale(0.92)"},{opacity:1,transform:"scale(1)"}],"blur":[{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0)"}]};
+    el.style.opacity="0";const E="cubic-bezier(0.16,1,0.3,1)";
+    const obs=new IntersectionObserver(([e])=>{if(!e.isIntersecting||ran.current)return;ran.current=true;obs.disconnect();if(kids&&stagger){Array.from(el.children).forEach((c,i)=>{c.style.opacity="0";c.animate(K[type],{duration:dur,delay:delay+i*stagger,easing:E,fill:"forwards"})});el.style.opacity="1";}else{el.animate(K[type],{duration:dur,delay,easing:E,fill:"forwards"});}},{threshold:0.08});
+    obs.observe(el);return()=>obs.disconnect();
+  },[type,delay,dur,stagger,kids]);
+  return ref;
+}
+
+function FadeUp(p){const r=useAnim({type:"fade-up",delay:p.delay||0});return React.createElement("div",{ref:r,className:p.className||""},p.children);}
+function SlideL(p){const r=useAnim({type:"slide-l",delay:p.delay||0});return React.createElement("div",{ref:r,className:p.className||""},p.children);}
+function SlideR(p){const r=useAnim({type:"slide-r",delay:p.delay||0});return React.createElement("div",{ref:r,className:p.className||""},p.children);}
+function ScaleUp(p){const r=useAnim({type:"scale",delay:p.delay||0});return React.createElement("div",{ref:r,className:p.className||""},p.children);}
+function BlurIn(p){const r=useAnim({type:"blur",delay:p.delay||0});return React.createElement("div",{ref:r,className:p.className||""},p.children);}
+function Stagger(p){const r=useAnim({type:p.type||"fade-up",stagger:p.stagger||80,kids:true});return React.createElement("div",{ref:r,className:p.className||""},p.children);}
+
+/* ============================================================
+   DATA
+   ============================================================ */
+const BUY_BOX=[["EBITDA","A$1M – $10M"],["Revenue","A$5M – $50M+"],["Enterprise Value","A$5M – $60M"],["Equity Cheque","A$3M – $20M"],["Ownership","Majority or significant minority"],["Geography","Australia (+ DACH cross-border)"],["Sectors We Like","Tech-enabled services, SaaS, business services, healthcare, industrial, consumer"],["Sectors We Avoid","Mining/resources, property dev, pre-revenue, retail food, agriculture"],["Situations","Growth capital, succession, MBO, partial exit, buy & build"]];
+
+const PROCESS=[{time:"48 hours",t:"Blind teaser review",d:"1-page anonymous summary to deals@b8n.com."},{time:"1 week",t:"IM review & feedback",d:"Sign your NDA, review the IM."},{time:"2–3 weeks",t:"Indicative offer",d:"Clear, non-binding offer."},{time:"4–6 weeks",t:"Due diligence",d:"Focused. Won't waste time."},{time:"10–14 wks",t:"LOI to completion",d:"Agreements, money, partnership."}];
+
+const ARTICLES=[{p:"Frameworks",t:"The 5 Systems Every $5M EBITDA Business Needs",d:"Mar 18, 2026",r:"8 min",ex:"The five systems that separate companies that scale."},{p:"Founder Ed",t:"What Actually Happens When You Take On a PE Partner",d:"Mar 11, 2026",r:"6 min",ex:"What changes, what doesn't."},{p:"Mittelstand",t:"What Australian SMEs Can Learn from Germany's Hidden Champions",d:"Mar 4, 2026",r:"10 min",ex:"Remarkable DNA shared with Australian SMEs."},{p:"Market",t:"Why the $1–10M EBITDA Segment Is Underserved",d:"Feb 25, 2026",r:"10 min",ex:"Thousands of businesses. The industry ignores them."},{p:"Succession",t:"Business Succession Planning: A Founder's Guide",d:"Feb 18, 2026",r:"7 min",ex:"How to think about what comes next."},{p:"Frameworks",t:"Sales Process That Doesn't Depend on the Founder",d:"Feb 11, 2026",r:"9 min",ex:"If relationships live in your head, your business has a ceiling."}];
+
+const TEAM_I=[{n:"Markus Binder",i:"MB",tl:"Co-founder & MD",li:C.li.mb,why:"Great businesses were stuck — not for lack of ambition, but for lack of the right partner.",pts:["Founded Globalways; built & exited Datacenter One → AtlasEdge (DigitalBridge / Liberty Global)","Led equity transactions €5M–€60M across infrastructure & technology","Harvard Business School OPM. YPO. Deep DACH + AU networks."],ps:"German-Australian. The bridge between Mittelstand and SME."},{n:"Leopold Neuerburg",i:"LN",tl:"Co-founder & MD",li:C.li.ln,why:"I built BuildingRadar and watched mid-market businesses struggle. B8N and Leo fix that.",pts:["Co-founded BuildingRadar — AI revenue engine, 150+ enterprises (Schindler, Holcim, Siemens)","Drove €2B+ pipeline revenue; raised $12.7M to cash-flow break-even","Architect of Leo. LSE, Cambridge, CDTM Munich."],ps:"Systems thinker. Every business problem is a process problem."}];
+
+const TEAM_O=[{n:"Dorian von Freyhold",i:"DvF",tl:"Director, Operations",li:C.li.dv,why:"I've seen what PE firms promise vs. deliver. B8N closes that gap.",pts:["Partnered with PEP, Quadrant, Adamantem, Partners Group","Revenue optimisation & pricing across industrial sectors","PhD, University of Queensland"],ps:"Thinks in spreadsheets."},{n:"Tony Ta",i:"TT",tl:"Senior Associate",li:C.li.tt,why:"Most SMEs need a partner, not just a buyer.",pts:["Former Acquisition Manager, Mantaro Brands — DD from LOI to SPA","Financial modelling across consumer & services","MSc WHU. MBA Washington Olin."],ps:"Vietnamese-Australian. Three languages."}];
+
+const FAQ=[{q:"Typical holding period?",a:"5–7 years. No forced exit."},{q:"What multiples do you pay?",a:"Fair market value on normalised EBITDA. Happy to discuss specifics."},{q:"Will I lose control?",a:"No. You remain in day-to-day decisions."},{q:"Charge for operational support?",a:"No. Leo, systems, strategy — all included."},{q:"Committed capital?",a:"Yes. Ready to deploy. We can close."},{q:"How fast?",a:"48-hour teaser response. Offer 2–3 weeks from IM. Completion 10–14 weeks."},{q:"What happens to my team?",a:"Your team is why we invest. Retain and develop."}];
+
+/* ============================================================
+   SHADCN REPLACEMENTS
+   ============================================================ */
+function Btn({children,variant="default",size="default",className="",disabled,onClick}){
+  const cls=`btn btn-${variant} ${size!=="default"?"btn-"+size:""} ${className}`;
+  return <button className={cls} disabled={disabled} onClick={onClick}>{children}</button>;
+}
+function Crd({children,className=""}){return <div className={`card ${className}`}>{children}</div>;}
+function CrdH({children}){return <div className="card-header">{children}</div>;}
+function CrdC({children,className=""}){return <div className={`card-content ${className}`}>{children}</div>;}
+function CrdT({children,className=""}){return <div className={`card-title ${className}`}>{children}</div>;}
+function CrdD({children,className=""}){return <div className={`card-desc ${className}`}>{children}</div>;}
+function Bdg({children,variant="secondary",className=""}){return <span className={`badge badge-${variant} ${className}`}>{children}</span>;}
+function Sep({className=""}){return <hr className={`separator ${className}`}/>;}
+
+/* ============================================================
+   SHARED
+   ============================================================ */
+function Cx({children,className=""}){return <div className={`max-w-5xl mx-auto px-6 ${className}`}>{children}</div>;}
+function Dot({c="bg-emerald-500"}){return <span className="relative inline-flex h-2 w-2 shrink-0"><span className={`fm-pulse absolute inline-flex h-full w-full rounded-full ${c} opacity-75`}/><span className={`relative inline-flex rounded-full h-2 w-2 ${c}`}/></span>;}
+function LiIco(){return <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>;}
+
+function PH({tag,title,sub}){return <header className="pt-24 pb-12 overflow-hidden"><Cx><BlurIn><Bdg className="mb-5 text-xs">{tag}</Bdg></BlurIn><FadeUp delay={80}><h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight mb-4">{title}</h1></FadeUp>{sub&&<FadeUp delay={160}><p className="text-lg text-slate-500 max-w-2xl leading-relaxed">{sub}</p></FadeUp>}</Cx></header>;}
+
+function SH({tag,title,sub,dark}){return <div className="mb-10">{tag&&<BlurIn><span className={`inline-block text-xs font-semibold uppercase tracking-widest mb-2 ${dark?"text-white/40":"text-sky-800"}`}>{tag}</span></BlurIn>}<FadeUp delay={50}><h2 className={`text-2xl font-extrabold tracking-tight ${dark?"text-white":"text-slate-900"}`}>{title}</h2></FadeUp>{sub&&<FadeUp delay={100}><p className={`text-base mt-2 max-w-2xl leading-relaxed ${dark?"text-white/50":"text-slate-500"}`}>{sub}</p></FadeUp>}</div>;}
+
+function BuyBoxGrid({dark}){return <div className={`rounded-xl border overflow-hidden ${dark?"border-white/10":"border-slate-200"}`}><div className={`px-5 py-3 text-xs font-bold uppercase tracking-widest ${dark?"bg-white/5 text-white/50":"bg-slate-900 text-white"}`}>B8N Investment Criteria</div>{BUY_BOX.map(([l,v],i)=><div key={l} className={`flex flex-col sm:flex-row border-t transition-colors ${dark?"border-white/5 hover:bg-white/[0.04]":"border-slate-100 hover:bg-slate-50"} ${i%2===0?(dark?"bg-white/[0.02]":"bg-slate-50/40"):""}`}><div className={`sm:w-44 shrink-0 px-5 pt-3 sm:py-3 text-xs font-semibold ${dark?"text-white/40":"text-slate-500"}`}>{l}</div><div className={`px-5 pb-3 sm:py-3 text-sm font-medium ${dark?"text-white/80":"text-slate-900"}`}>{v}</div></div>)}</div>;}
+
+function TL({steps}){return <div className="relative pl-8 border-l-2 border-slate-200">{steps.map((s,i)=><FadeUp key={i} delay={i*80}><div className="relative mb-8 last:mb-0 group"><span className="tl-dot absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-white border-[2.5px] border-sky-800"/><Bdg className="mb-1">{s.time}</Bdg><h4 className="text-sm font-bold text-slate-900 mt-1 mb-1">{s.t}</h4><p className="text-sm text-slate-500">{s.d}</p></div></FadeUp>)}</div>;}
+
+function Acc({items}){const[open,setOpen]=useState(null);return <div className="space-y-2.5 max-w-2xl">{items.map((f,i)=><FadeUp key={i} delay={i*40}><button className="fm-card-lift w-full text-left rounded-xl border border-slate-200 bg-white px-5 py-4 transition-all duration-300" onClick={()=>setOpen(open===i?null:i)} aria-expanded={open===i}><div className="flex items-start justify-between gap-4"><h4 className="text-sm font-semibold text-slate-900">{f.q}</h4><span className={`text-slate-300 shrink-0 text-lg leading-none select-none transition-transform duration-300 ${open===i?"rotate-45 text-slate-500":""}`}>+</span></div><div className={`acc-body ${open===i?"acc-body--open":""}`}><div className="overflow-hidden"><p className="text-sm text-slate-500 leading-relaxed pt-3">{f.a}</p></div></div></button></FadeUp>)}</div>;}
+
+function TC({t}){return <Crd className="fm-card-lift transition-all duration-300 h-full"><CrdH><div className="flex items-center gap-4"><div className="w-14 h-14 rounded-full bg-slate-900 text-white text-base font-bold flex items-center justify-center shrink-0">{t.i}</div><div><div className="flex items-center gap-2"><CrdT>{t.n}</CrdT><a href={t.li} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-sky-700 transition-colors"><LiIco/></a></div><CrdD className="font-semibold text-sky-800">{t.tl}</CrdD></div></div></CrdH><CrdC><p className="text-sm text-sky-800/80 italic mb-3">&ldquo;{t.why}&rdquo;</p><div className="space-y-1.5 mb-3">{t.pts.map((p,j)=><div key={j} className="flex items-start gap-2 text-sm text-slate-600"><span className="text-slate-300 mt-0.5 shrink-0">–</span><span>{p}</span></div>)}</div><Sep className="my-3"/><p className="text-xs text-slate-400">{t.ps}</p></CrdC></Crd>;}
+
+function CTABlock({title,sub,children}){return <ScaleUp><div className="cta-block bg-slate-900 rounded-2xl px-8 py-14 text-center"><h2 className="text-2xl font-extrabold text-white mb-2 relative z-10">{title}</h2>{sub&&<p className="text-sm text-white/50 mb-7 max-w-md mx-auto relative z-10">{sub}</p>}<div className="flex gap-3 justify-center flex-wrap relative z-10">{children}</div></div></ScaleUp>;}
+
+/* ============================================================
+   NAV
+   ============================================================ */
 function Nav({page,go}){
-  var items=[{id:"home",l:"Home"},{id:"approach",l:"Approach"},{id:"services",l:"Services"},{id:"opportunities",l:"Opportunities"},{id:"research",l:"Research"},{id:"about",l:"About"}];
-  return React.createElement("div",{style:{background:N1,position:"sticky",top:0,zIndex:100}},
-    React.createElement("div",{style:{maxWidth:920,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"11px 20px"}},
-      React.createElement("div",{onClick:function(){go("home")},style:{cursor:"pointer"}},React.createElement(Logo,{size:20,light:true})),
-      React.createElement("div",{style:{display:"flex",gap:2,alignItems:"center",flexWrap:"wrap"}},
-        items.map(function(i){return React.createElement("span",{key:i.id,onClick:function(){go(i.id)},style:{padding:"6px 12px",borderRadius:6,fontSize:12,cursor:"pointer",color:page===i.id?"#fff":N5,background:page===i.id?N2+"80":"transparent",fontWeight:page===i.id?600:400}},i.l)}),
-        React.createElement("span",{onClick:function(){go("valuation")},style:{padding:"7px 16px",borderRadius:6,background:N2,color:"#fff",fontSize:12,fontWeight:600,cursor:"pointer",marginLeft:8}},"Get valued")
-      )
-    )
-  );
+  const[open,setOpen]=useState(false);
+  const[scr,setScr]=useState(false);
+  const links=[["home","Home"],["why","Why B8N"],["build","How We Build"],["thinking","Our Thinking"],["team","The Team"],["founders","For Founders"]];
+  useEffect(()=>{const h=()=>setScr(window.scrollY>12);window.addEventListener("scroll",h,{passive:true});return()=>window.removeEventListener("scroll",h);},[]);
+  useEffect(()=>{if(!open)return;const h=e=>{if(!e.target.closest(".nav-inner"))setOpen(false)};document.addEventListener("click",h);return()=>document.removeEventListener("click",h);},[open]);
+  return <nav className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${scr?"bg-white/95 border-slate-200 shadow-sm":"bg-white/70 border-transparent"}`}><div className="nav-inner max-w-5xl mx-auto px-6 flex items-center justify-between h-16"><button onClick={()=>go("home")} className="text-xl font-extrabold tracking-tight text-slate-900 fm-btn-press">B8N</button><div className={`nav-links ${open?"nav-links--open":""} items-center gap-1`}>{links.map(([k,l])=><button key={k} onClick={()=>{go(k);setOpen(false)}} className={`px-3 py-1.5 rounded-md text-sm transition-all duration-200 ${page===k?"font-semibold text-slate-900 bg-slate-50":"text-slate-500 hover:text-slate-900 hover:bg-slate-50"}`}>{l}</button>)}<a href={C.li.co} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-sky-700 transition-colors px-2"><LiIco/></a><Btn size="sm" className="fm-btn-lift ml-1" onClick={()=>{go("contact");setOpen(false)}}>Contact</Btn></div><button className="burger md:hidden flex flex-col justify-center gap-1.5 w-8 h-8" onClick={e=>{e.stopPropagation();setOpen(!open)}} aria-label="Menu"><span className={`block w-5 h-0.5 bg-slate-900 rounded-full transition-transform duration-300 origin-center ${open?"rotate-45 translate-y-[3px]":""}`}/><span className={`block w-5 h-0.5 bg-slate-900 rounded-full transition-opacity duration-200 ${open?"opacity-0":""}`}/><span className={`block w-5 h-0.5 bg-slate-900 rounded-full transition-transform duration-300 origin-center ${open?"-rotate-45 -translate-y-[3px]":""}`}/></button></div></nav>;
 }
 
-function Sec({children,alt,style:s}){return React.createElement("div",{style:Object.assign({maxWidth:720,margin:"0 auto",padding:"36px 20px"},alt?{background:"#f7f9fc",maxWidth:"100%"}:{},s||{})},alt?React.createElement("div",{style:{maxWidth:720,margin:"0 auto"}},children):children);}
-function H2({children,sub}){return React.createElement("div",{style:{marginBottom:20}},React.createElement("h2",{style:{fontSize:18,fontWeight:700,color:N1,margin:"0 0 4px"}},children),sub&&React.createElement("p",{style:{fontSize:12,color:"#6b7280",margin:0,lineHeight:1.5}},sub));}
-function Cd({children,style:s,onClick}){var h=useState(false),hov=h[0],setH=h[1];return React.createElement("div",{onClick:onClick,onMouseEnter:function(){setH(true)},onMouseLeave:function(){setH(false)},style:Object.assign({background:"#fff",borderRadius:10,border:"1px solid "+(hov&&onClick?"#b0c4de":"#e5e7eb"),padding:16,cursor:onClick?"pointer":"default",transition:"all .15s"},s||{})},children);}
-
-var LISTINGS=[
-  {id:"L001",name:"Managed IT provider",blind:"B8N-IT-2601",loc:"Sydney, NSW",rev:"$4.2M",ebitda:"$1.1M",m:"26%",mult:"5.5x",sector:"IT & Cybersecurity",tag:"Contracted",desc:"Established MSP serving 80+ SME clients. 92% recurring revenue. Strong NOC team, Microsoft and Cisco partnerships.",highlights:["92% recurring revenue","80+ active contracts","3-year avg. tenure","ISO 27001"],asking:"$6.1M"},
-  {id:"L002",name:"Commercial cleaning group",blind:"B8N-ES-2602",loc:"Melbourne, VIC",rev:"$3.4M",ebitda:"$850K",m:"25%",mult:"3.8x",sector:"Essential Services",tag:"Recurring",desc:"Multi-site commercial cleaning with government and corporate contracts. 15+ years, strong renewal rates.",highlights:["Government contracts","85% renewal rate","15+ year track record","120 employees"],asking:"$3.2M"},
-  {id:"L003",name:"Skip bin operator",blind:"B8N-WM-2603",loc:"Brisbane, QLD",rev:"$5.1M",ebitda:"$1.3M",m:"25%",mult:"3.5x",sector:"Waste Management",tag:"Route-based",desc:"Regional skip bin and waste collection with council contracts and strong route density. Modern fleet, owned yard.",highlights:["Council contracts","Owned depot & fleet","Strong route density","25% EBITDA margin"],asking:"$4.6M"},
-  {id:"L004",name:"Fire & security systems",blind:"B8N-ES-2604",loc:"Newcastle, NSW",rev:"$5.8M",ebitda:"$1.5M",m:"26%",mult:"4.2x",sector:"Essential Services",tag:"Contracted",desc:"Licensed fire protection and security installation/maintenance. Regulatory-driven recurring testing revenue.",highlights:["Regulatory demand","60% recurring","Licensed technicians","AS1851 compliant"],asking:"$6.3M"},
-  {id:"L005",name:"Data centre services",blind:"B8N-DC-2605",loc:"Sydney, NSW",rev:"$8.6M",ebitda:"$2.8M",m:"33%",mult:"6.5x",sector:"Data Centres",tag:"Subscription",desc:"Colocation and managed hosting. Tier III certified. Long-term enterprise contracts with blue-chip tenants.",highlights:["Tier III certified","95% contracted","Blue-chip tenants","33% EBITDA margin"],asking:"$18.2M"},
-  {id:"L006",name:"Civil construction",blind:"B8N-CC-2606",loc:"Gold Coast, QLD",rev:"$12M",ebitda:"$2.4M",m:"20%",mult:"2.8x",sector:"Construction",tag:"Backlog",desc:"Specialist civil contractor \u2014 road and drainage infrastructure. $18M forward order book.",highlights:["$18M order book","Government projects","Specialised equipment","20-year track record"],asking:"$6.7M"},
-];
-
-var RESEARCH=[
-  {id:"r1",date:"Mar 21, 2026",title:"Data centre demand surges as AI workloads triple",sector:"Data centres",color:N2,summary:"IBISWorld data shows Australian data centre revenue grew 14.2% in 2025. AI is the primary driver \u2014 GPU cluster demand up 3x YoY. Colocation operators with 5MW+ available power are commanding 8-10x EBITDA.",sources:["IBISWorld","CBRE Asia Pacific Q1 2026","Australian Energy Regulator"],metrics:[{l:"Revenue",v:"$4.8B"},{l:"Growth",v:"+14.2%"},{l:"Multiple",v:"7.2x"},{l:"Vacancy",v:"3.1%"}]},
-  {id:"r2",date:"Mar 14, 2026",title:"Managed SOC operators see 40% valuation uplift",sector:"IT & cyber",color:"#0e7490",summary:"23 Australian MSSP transactions show 24/7 SOC operators trade at 40% premium over general MSPs. Cybersecurity services grew 11.3% in 2025.",sources:["IBISWorld","Macquarie Tech Services M&A","ASD Cyber Threat Report"],metrics:[{l:"Revenue",v:"$3.2B"},{l:"SOC premium",v:"+40%"},{l:"Deals",v:"23"},{l:"Multiple",v:"5.8x"}]},
-  {id:"r3",date:"Mar 7, 2026",title:"Fire compliance revenue grows 8% as regulations tighten",sector:"Essential services",color:"#059669",summary:"NSW and VIC fire safety regulations driving mandatory testing frequency increases. Fire protection segment at $2.1B with top 10 operators holding <15% share.",sources:["IBISWorld","Fire Protection Association","NSW Building Commissioner"],metrics:[{l:"Segment",v:"$2.1B"},{l:"Growth",v:"+8%"},{l:"Top 10",v:"<15%"},{l:"Recurring",v:"65%"}]},
-  {id:"r4",date:"Feb 28, 2026",title:"Skip bin consolidation: route density drives 2x margin gap",sector:"Waste",color:"#d97706",summary:"High route density operators (50+ bins/route/day) achieve 28-32% EBITDA vs 14-18% for dispersed. Council contract holders show 40% lower CAC.",sources:["IBISWorld","Waste Management Review","B8N pipeline data"],metrics:[{l:"Dense",v:"28\u201332%"},{l:"Spread",v:"14\u201318%"},{l:"Multiple",v:"3.4x"},{l:"Frag.",v:"High"}]},
-  {id:"r5",date:"Feb 21, 2026",title:"$120B infrastructure pipeline, contractor capacity constrained",sector:"Construction",color:"#dc2626",summary:"Government committed $120B+ through 2030. Severe contractor capacity constraints. Specialists seeing 18-24 month order books.",sources:["IBISWorld","Infrastructure Australia","Deloitte Infrastructure Monitor"],metrics:[{l:"Pipeline",v:"$120B+"},{l:"Backlog",v:"18 mo"},{l:"Multiple",v:"3.1x"},{l:"Growth",v:"+3.2%"}]},
-];
-
-function NDAModal({listing,onClose}){
-  var s=useState({name:"",email:"",company:"",phone:"",agreed:false}),f=s[0],setF=s[1];
-  var d=useState(false),done=d[0],setDone=d[1];
-  var up=function(k,v){setF(function(p){var n=Object.assign({},p);n[k]=v;return n})};
-  var ok=f.name&&f.email&&f.company&&f.agreed;
-  if(done)return React.createElement("div",{style:{background:"#fff",borderRadius:14,padding:28,maxWidth:440,width:"100%",textAlign:"center"}},
-    React.createElement("div",{style:{width:44,height:44,borderRadius:22,background:"#dcfce7",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 12px",fontSize:20,color:"#059669"}},"\u2713"),
-    React.createElement("h3",{style:{margin:"0 0 4px",fontSize:16,fontWeight:700,color:N1}},"IM request submitted"),
-    React.createElement("p",{style:{fontSize:12,color:"#6b7280",margin:"0 0 16px"}},"Information Memorandum for ",listing.blind," will be sent to ",f.email," within 24 hours."),
-    React.createElement("div",{onClick:onClose,style:{padding:"10px 20px",borderRadius:8,background:N2,color:"#fff",fontSize:13,fontWeight:600,cursor:"pointer",display:"inline-block"}},"Done")
-  );
-  return React.createElement("div",{style:{background:"#fff",borderRadius:14,padding:28,maxWidth:480,width:"100%",maxHeight:"85vh",overflow:"auto",position:"relative"}},
-    React.createElement("div",{onClick:onClose,style:{position:"absolute",top:14,right:18,fontSize:18,cursor:"pointer",color:"#9ca3af"}},"\u2715"),
-    React.createElement("div",{style:{fontSize:15,fontWeight:700,color:N1,marginBottom:4}},"Request Information Memorandum"),
-    React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:16}},listing.blind," \u00B7 ",listing.loc),
-    [{k:"name",l:"Full legal name",p:"As on NDA"},{k:"email",l:"Email",p:"you@company.com"},{k:"company",l:"Company",p:"Entity name"},{k:"phone",l:"Phone",p:"+61..."}].map(function(x){return React.createElement("div",{key:x.k,style:{marginBottom:10}},React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:3}},x.l),React.createElement("input",{value:f[x.k],onChange:function(e){up(x.k,e.target.value)},placeholder:x.p,style:inp}))}),
-    React.createElement("label",{style:{display:"flex",gap:8,alignItems:"flex-start",margin:"14px 0 16px",cursor:"pointer"}},
-      React.createElement("input",{type:"checkbox",checked:f.agreed,onChange:function(e){up("agreed",e.target.checked)},style:{width:16,height:16,accentColor:N2,marginTop:2}}),
-      React.createElement("span",{style:{fontSize:11,color:"#374151",lineHeight:1.5}},"I agree to B8N\u2019s NDA terms. 2-year confidentiality. Information for transaction evaluation only. No direct contact with the business. NSW law.")
-    ),
-    React.createElement("div",{onClick:ok?function(){setDone(true)}:undefined,style:Object.assign({},btnS,{opacity:ok?1:0.35,cursor:ok?"pointer":"default"})},"Sign NDA & request IM")
-  );
-}
-
-function ListingDetail({listing,onBack}){
-  var n=useState(false),nda=n[0],setNda=n[1];
-  return React.createElement("div",null,
-    nda&&React.createElement("div",{style:{position:"fixed",inset:0,background:"rgba(0,0,0,0.5)",display:"flex",alignItems:"center",justifyContent:"center",zIndex:200,padding:20},onClick:function(e){if(e.target===e.currentTarget)setNda(false)}},React.createElement(NDAModal,{listing:listing,onClose:function(){setNda(false)}})),
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"20px 20px 28px"}},React.createElement("div",{style:{maxWidth:720,margin:"0 auto"}},
-      React.createElement("div",{onClick:onBack,style:{fontSize:11,color:N5,cursor:"pointer",marginBottom:10}},"\u2190 Back"),
-      React.createElement("div",{style:{fontSize:10,color:N5,marginBottom:2}},listing.blind),
-      React.createElement("h1",{style:{color:"#fff",fontSize:22,fontWeight:700,margin:"0 0 4px"}},listing.name),
-      React.createElement("div",{style:{fontSize:12,color:N5}},listing.loc," \u00B7 ",listing.sector)
-    )),
-    React.createElement(Sec,null,
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:8,marginBottom:20}},
-        [{l:"Revenue",v:listing.rev},{l:"EBITDA",v:listing.ebitda},{l:"Margin",v:listing.m},{l:"Multiple",v:listing.mult},{l:"Asking",v:listing.asking}].map(function(x){return React.createElement("div",{key:x.l,style:{background:"#f7f9fc",borderRadius:8,padding:"12px 8px",textAlign:"center"}},React.createElement("div",{style:{fontSize:17,fontWeight:700,color:N1}},x.v),React.createElement("div",{style:{fontSize:9,color:"#9ca3af",textTransform:"uppercase"}},x.l))})
-      ),
-      React.createElement("p",{style:{fontSize:13,color:"#6b7280",lineHeight:1.7,margin:"0 0 16px"}},listing.desc),
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6,marginBottom:20}},
-        listing.highlights.map(function(h,i){return React.createElement("div",{key:i,style:{display:"flex",gap:8,fontSize:12,color:"#374151"}},React.createElement("span",{style:{color:"#059669"}},"\u2713"),h)})
-      ),
-      React.createElement("div",{style:{background:N6,borderRadius:10,padding:16,display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:10}},
-        React.createElement("div",null,React.createElement("div",{style:{fontSize:14,fontWeight:700,color:N1}},"Request full Information Memorandum"),React.createElement("div",{style:{fontSize:12,color:N2}},"NDA required. Detailed financials, operations, and growth plan.")),
-        React.createElement("div",{onClick:function(){setNda(true)},style:{padding:"10px 20px",borderRadius:8,background:N2,color:"#fff",fontSize:13,fontWeight:600,cursor:"pointer"}},"Request IM")
-      )
-    )
-  );
-}
+/* ============================================================
+   PAGES
+   ============================================================ */
 
 function HomePage({go}){
-  return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"52px 20px 40px",textAlign:"center",position:"relative",overflow:"hidden"}},
-      React.createElement("div",{style:{position:"absolute",inset:0,opacity:0.03,backgroundImage:"repeating-linear-gradient(0deg,transparent,transparent 20px,rgba(255,255,255,0.5) 20px,rgba(255,255,255,0.5) 21px)"}}),
-      React.createElement("div",{style:{maxWidth:560,margin:"0 auto",position:"relative"}},
-        React.createElement("h1",{style:{color:"#fff",fontSize:28,fontWeight:700,lineHeight:1.25,margin:"0 0 14px"}},"We invest in Australia\u2019s",React.createElement("br"),"industrial mid-market."),
-        React.createElement("p",{style:{color:N5,fontSize:14,lineHeight:1.7,margin:"0 0 24px"}},"B8N acquires and grows businesses in the $3\u201350M segment \u2014 the part of the market too small for institutional PE but too valuable for passive ownership. We bring capital, AI-powered growth capability, and hands-on operational experience."),
-        React.createElement("div",{style:{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}},
-          React.createElement("div",{onClick:function(){go("valuation")},style:{padding:"11px 24px",borderRadius:8,background:N2,color:"#fff",fontSize:13,fontWeight:600,cursor:"pointer"}},"Value my business"),
-          React.createElement("div",{onClick:function(){go("approach")},style:{padding:"11px 24px",borderRadius:8,border:"1px solid "+N3+"60",color:N5,fontSize:13,cursor:"pointer"}},"Our approach")
-        )
-      )
-    ),
-    React.createElement(Sec,null,
-      React.createElement(H2,null,"What we do"),
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:14}},
-        [{t:"Acquire",d:"We selectively acquire businesses with contracted revenue and operational upside in sectors we know deeply.",c:N2},{t:"Grow",d:"We deploy AI-powered revenue engineering inside portfolio companies \u2014 driving measurable topline growth, not slide decks.",c:"#059669"},{t:"Broker",d:"For businesses we don\u2019t acquire, we act as full-service broker \u2014 creating panoramic deal flow across the market.",c:"#0e7490"}].map(function(x){return React.createElement("div",{key:x.t,style:{borderTop:"3px solid "+x.c,padding:"14px 0 0"}},React.createElement("div",{style:{fontSize:14,fontWeight:700,color:N1,marginBottom:6}},x.t),React.createElement("div",{style:{fontSize:12,color:"#6b7280",lineHeight:1.6}},x.d))})
-      )
-    ),
-    React.createElement(Sec,{alt:true},
-      React.createElement(H2,{sub:"Where we invest and build"},"Sectors"),
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:10}},
-        SECTORS.map(function(s){return React.createElement(Cd,{key:s.id,onClick:function(){go("sector_"+s.id)}},
-          React.createElement("div",{style:{display:"flex",alignItems:"center",gap:8,marginBottom:6}},
-            React.createElement("div",{style:{width:22,height:22,borderRadius:6,background:s.bg,display:"flex",alignItems:"center",justifyContent:"center",color:s.color,fontSize:10}},s.icon),
-            React.createElement("span",{style:{fontSize:13,fontWeight:600,color:N1}},s.label)),
-          React.createElement("div",{style:{display:"flex",gap:8,fontSize:10,color:"#6b7280"}},
-            React.createElement("span",null,s.stats.size),React.createElement("span",null,s.stats.growth),React.createElement("span",null,s.stats.multiple))
-        )})
-      )
-    ),
-    React.createElement(Sec,null,
-      React.createElement(H2,{sub:"AI-generated weekly insights"},"Research"),
-      RESEARCH.slice(0,3).map(function(r){return React.createElement("div",{key:r.id,onClick:function(){go("research")},style:{padding:"12px 0",borderBottom:"1px solid #f3f4f6",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"baseline"}},
-        React.createElement("div",null,React.createElement("div",{style:{fontSize:13,fontWeight:600,color:N1}},r.title),React.createElement("div",{style:{fontSize:10,color:"#9ca3af",marginTop:2}},r.sector," \u00B7 ",r.date)),
-        React.createElement("span",{style:{fontSize:10,color:N2,fontWeight:500,flexShrink:0,marginLeft:12}},"Read \u2192")
-      )}),
-      React.createElement("div",{style:{marginTop:12}},React.createElement("span",{onClick:function(){go("research")},style:{fontSize:12,color:N2,fontWeight:600,cursor:"pointer"}},"All research \u2192"))
-    ),
-    React.createElement(Sec,{alt:true},
-      React.createElement("div",{style:{maxWidth:440,margin:"0 auto",textAlign:"center"}},
-        React.createElement(H2,{sub:"Indicative valuation in 2 minutes"},"How much is your business worth?"),
-        React.createElement("div",{onClick:function(){go("valuation")},style:{padding:"12px 0",borderRadius:8,background:N2,color:"#fff",fontSize:14,fontWeight:600,cursor:"pointer",width:"100%",textAlign:"center"}},"Start free valuation"),
-        React.createElement("div",{style:{fontSize:10,color:"#9ca3af",marginTop:8}},"100% confidential. No obligation.")
-      )
-    )
-  );
+  const hero=useAnim({type:"fade-up",stagger:130,kids:true});
+  return <><header className="hero-bg pt-32 pb-24 overflow-hidden"><Cx><div ref={hero}><div><Bdg className="mb-6 text-xs">Australian Private Equity · $1–10M EBITDA</Bdg></div><div><h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-slate-900 leading-[1.08] mb-4">Sell your business to operators<br/>who build, not just buy.</h1></div><div><p className="text-lg text-slate-500 max-w-xl leading-relaxed mb-10">B8N is an Australian private equity fund for businesses at $1–10M EBITDA. Whether you're planning succession, seeking a growth partner, or exploring your exit — we bring committed capital, hands-on execution, and proprietary revenue intelligence.</p></div><div><div className="flex gap-3 flex-wrap"><Btn size="lg" className="fm-btn-lift" onClick={()=>go("founders")}>I'm a Business Owner</Btn><Btn variant="outline" size="lg" className="fm-btn-lift" onClick={()=>go("advisers")}>I'm a Broker / Adviser</Btn></div></div></div></Cx></header>
+
+  <section className="py-16 bg-slate-50"><Cx><SH tag="Investment criteria" title="Our buy box — is your business a fit?" sub="Sell your business to a fund that publishes criteria upfront."/><ScaleUp><BuyBoxGrid/></ScaleUp><FadeUp delay={200}><div className="flex items-center gap-4 mt-5 flex-wrap"><Btn size="sm" className="fm-btn-lift" onClick={()=>go("advisers")}>Send us a deal</Btn><span className="text-sm text-slate-400">48-hour response.</span></div></FadeUp></Cx></section>
+
+  <section className="py-24 overflow-hidden"><Cx><SH tag="Why business owners choose B8N" title="Three things no other mid-market PE fund combines."/><div className="grid md:grid-cols-3 gap-5">{[{t:"Operator-Led",a:"border-t-[3px] border-t-slate-900",d:"Embedded alongside your leadership. Every week. All support included.",W:SlideL},{t:"Leo: Revenue Intelligence",a:"border-t-[3px] border-t-sky-700",d:"Proprietary methodology finding hidden growth — pricing, churn, segmentation. €2B+ pipeline proven.",W:FadeUp},{t:"AU + DACH Network",a:"border-t-[3px] border-t-emerald-600",d:"Mittelstand discipline meets Australian ambition. Cross-border deal flow no domestic fund matches.",W:SlideR}].map((x,i)=><x.W key={x.t} delay={i*120}><Crd className={`fm-card-lift ${x.a} h-full transition-all duration-300`}><CrdH><div className="flex items-center gap-2"><Dot/><CrdT>{x.t}</CrdT></div></CrdH><CrdC><p className="text-sm text-slate-500 leading-relaxed">{x.d}</p></CrdC></Crd></x.W>)}</div></Cx></section>
+
+  <section className="dark-section py-24 overflow-hidden"><Cx><SH dark tag="Track record" title="We haven't done 70 deals. Here's what we have done."/><Stagger stagger={60} type="scale" className="grid grid-cols-2 md:grid-cols-4 gap-4">{[{v:"€60M+",l:"Equity transactions"},{v:"€2B+",l:"Pipeline via Leo"},{v:"150+",l:"Enterprises served"},{v:"3",l:"Businesses exited"},{v:"$12.7M",l:"VC raised"},{v:"20+",l:"Years experience"},{v:"AU+DACH",l:"Two markets"},{v:"Committed",l:"Capital deployed"}].map(m=><div key={m.l} className="bg-white/5 border border-white/10 rounded-xl px-4 py-5 text-center hover:bg-white/[0.07] transition-colors"><div className="text-xl font-extrabold text-white tracking-tight">{m.v}</div><div className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">{m.l}</div></div>)}</Stagger></Cx></section>
+
+  <section className="py-24"><Cx><CTABlock title="Thinking about selling your business?" sub="Confidential. No pitch decks. No commitments."><Btn variant="secondary" size="lg" className="fm-btn-lift" onClick={()=>go("contact")}>Start a Conversation</Btn><Btn variant="outline" size="lg" className="fm-btn-lift" onClick={()=>go("build")} style={{color:"white",borderColor:"rgba(255,255,255,.2)"}}>See the Playbook</Btn></CTABlock></Cx></section>
+
+  <section className="py-24 bg-slate-50"><Cx><SH tag="Insights" title="Guides for Australian business owners." sub="Succession planning, EBITDA valuations, operational frameworks."/><div className="grid md:grid-cols-3 gap-5">{ARTICLES.slice(0,3).map((a,i)=><FadeUp key={i} delay={i*100}><Crd className="fm-card-lift cursor-pointer transition-all duration-300 h-full" onClick={()=>go("thinking")}><CrdH><div className="flex items-center gap-2 mb-1"><Bdg>{a.p}</Bdg><span className="text-xs text-slate-400">{a.r}</span></div><CrdT className="text-sm leading-snug">{a.t}</CrdT></CrdH><CrdC><p className="text-xs text-slate-500">{a.ex}</p></CrdC></Crd></FadeUp>)}</div></Cx></section></>;
 }
 
-function ApproachPage({go}){
-  return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"36px 20px 28px",textAlign:"center"}},
-      React.createElement("div",{style:{maxWidth:520,margin:"0 auto"}},
-        React.createElement("h1",{style:{color:"#fff",fontSize:24,fontWeight:700,margin:"0 0 10px"}},"Our approach"),
-        React.createElement("p",{style:{color:N5,fontSize:13,lineHeight:1.7,margin:0}},"We target the $3\u201350M revenue segment \u2014 too small for institutional PE, too valuable for passive ownership.")
-      )),
-    React.createElement(Sec,null,
-      React.createElement(H2,null,"Why this segment"),
-      React.createElement("p",{style:{fontSize:13,color:"#6b7280",lineHeight:1.7,margin:"0 0 20px"}},"Australia\u2019s largest PE firms \u2014 PEP, Adamantem, BGH \u2014 target enterprise values of $100M+. Below that sits a vast, fragmented market of well-run industrial businesses with real contracted revenue, real margins, and real growth potential \u2014 but no institutional partner. That\u2019s where B8N operates."),
-      React.createElement(H2,null,"How we create value"),
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,marginBottom:24}},
-        [{t:"AI-powered revenue engine",d:"Proprietary methodology proven across 150+ enterprises. We identify and pursue opportunities before competitors."},{t:"Operational improvement",d:"Process optimisation, technology modernisation, cost management \u2014 delivered by founders who\u2019ve built and exited real businesses."},{t:"Buy-and-build",d:"We source, evaluate, and integrate add-on acquisitions to build sector platforms at higher multiples."},{t:"Capital and network",d:"Deployable capital backed by family office co-investors. Cross-border German-Australian network through YPO and Harvard."}].map(function(x){return React.createElement("div",{key:x.t},React.createElement("div",{style:{fontSize:13,fontWeight:700,color:N1,marginBottom:4}},x.t),React.createElement("div",{style:{fontSize:12,color:"#6b7280",lineHeight:1.6}},x.d))})
-      ),
-      React.createElement(H2,null,"Investment criteria"),
-      React.createElement("div",{style:{marginBottom:24}},
-        [{l:"Revenue",v:"$3\u201350M AUD"},{l:"EBITDA margin",v:">20% preferred"},{l:"Revenue model",v:"Recurring / contracted"},{l:"Geography",v:"Australia"},{l:"Sectors",v:"Data centres, IT, essential services, waste, infrastructure"},{l:"Deal size",v:"$2\u201330M enterprise value"}].map(function(x){return React.createElement("div",{key:x.l,style:{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:"1px solid #f3f4f6"}},React.createElement("span",{style:{fontSize:12,color:"#6b7280"}},x.l),React.createElement("span",{style:{fontSize:12,fontWeight:600,color:N1}},x.v))})
-      ),
-      React.createElement("div",{style:{background:N6,borderRadius:10,padding:18,textAlign:"center"}},
-        React.createElement("div",{style:{fontSize:15,fontWeight:700,color:N1,marginBottom:6}},"Own a business in one of our sectors?"),
-        React.createElement("div",{style:{fontSize:12,color:"#6b7280",marginBottom:12}},"Start with a confidential valuation."),
-        React.createElement("div",{onClick:function(){go("valuation")},style:{display:"inline-block",padding:"10px 22px",borderRadius:8,background:N2,color:"#fff",fontSize:13,fontWeight:600,cursor:"pointer"}},"Get free valuation")
-      )
-    )
-  );
+function WhyPage({go}){return <><PH tag="Why B8N" title="Australia's operator-led private equity fund." sub="Founded because $1–10M EBITDA businesses deserve better than quarterly check-ins."/><section className="py-12 bg-slate-50"><Cx><FadeUp><Crd className="border-l-4 border-l-sky-800"><CrdC className="py-6"><h3 className="text-base font-bold text-slate-900 mb-2">Committed capital. Deep experience.</h3><p className="text-sm text-slate-600 leading-relaxed">20+ years combined transaction experience at DigitalBridge, Liberty Global, Star Capital, and Mantaro Brands. Capital committed and ready.</p></CrdC></Crd></FadeUp></Cx></section><section className="py-20 overflow-hidden"><Cx><SH tag="An Australian fund with a European edge" title="Mittelstand meets SME."/><div className="grid md:grid-cols-2 gap-8"><SlideL><p className="text-base text-slate-600 leading-relaxed mb-4">Direct experience in Germany's Mittelstand — family-owned, operationally excellent businesses. We bring that discipline and long-term focus to every Australian investment.</p></SlideL><SlideR delay={120}><Stagger stagger={70} className="space-y-3">{[["Cross-border deal flow","AU ↔ DACH pipeline."],["Operational DNA","Mittelstand discipline applied locally."],["European expansion","Genuine DACH market access."]].map(([t,d])=><Crd key={t} className="fm-card-lift transition-all duration-300"><CrdC className="py-3"><h4 className="text-sm font-semibold text-slate-900 mb-0.5">{t}</h4><p className="text-xs text-slate-500">{d}</p></CrdC></Crd>)}</Stagger></SlideR></div></Cx></section><section className="dark-section py-20 overflow-hidden"><Cx><SH dark tag="Commitments" title="Specific. Falsifiable."/><div className="grid md:grid-cols-2 gap-10"><Stagger stagger={70} className="space-y-3">{["Fewer deals, done better.","Show up every week.","Our own money alongside yours.","Tell you what we think."].map(v=><div key={v} className="flex items-start gap-3 text-white/80 text-sm"><span className="text-emerald-400 mt-0.5 shrink-0">✓</span><span>{v}</span></div>)}</Stagger><Stagger stagger={70} className="space-y-3">{["Don't load debt.","Don't cut headcount.","Don't run 6-month auctions.","Don't charge consulting fees.","Don't disappear after closing."].map(v=><div key={v} className="flex items-start gap-3 text-white/50 text-sm"><span className="text-red-400 mt-0.5 shrink-0">×</span><span>{v}</span></div>)}</Stagger></div></Cx></section><section className="py-20"><Cx><CTABlock title="See the playbook." sub="What the first 12 months look like."><Btn variant="secondary" size="lg" className="fm-btn-lift" onClick={()=>go("build")}>How We Build</Btn></CTABlock></Cx></section></>;}
+
+function BuildPage(){const P=[{n:"01",t:"Listen",tm:"Wk 1–4",c:"border-l-sky-600",l:"Before we change anything, we learn everything.",d:"First month embedded."},{n:"02",t:"Blueprint",tm:"Wk 5–8",c:"border-l-indigo-600",l:"12-month value creation plan. Together.",d:"Initiatives, owners, timelines, KPIs.",leo:"We deploy Leo — pricing, customers, commercial ops. Specific growth levers identified. Results in weeks."},{n:"03",t:"Build",tm:"Mo 3–12",c:"border-l-emerald-600",l:"Where the real work happens.",d:"All support included.",subs:[["Revenue Intelligence (Leo)","Pricing, churn, LTV, pipeline."],["Technology & Systems","CRM/ERP, dashboards, automation."],["Commercial Excellence","Pricing, sales, segmentation."],["People & Organisation","Hires, org design, incentives."],["Growth & M&A","Revenue streams, bolt-ons, PMI."]]},{n:"04",t:"Scale",tm:"Year 2+",c:"border-l-amber-500",l:"Foundations set. Scale.",d:"Organic growth, acquisitions, DACH expansion, or exit. Capital structuring included."}];return <><PH tag="How We Build" title="The operational playbook. Radically transparent." sub="Everything included. No consulting fees."/><section className="py-16 overflow-hidden"><Cx><div className="space-y-6">{P.map((p,i)=><FadeUp key={p.n} delay={i*90}><Crd className={`fm-card-lift border-l-4 ${p.c} transition-all duration-300`}><CrdH><div className="flex items-center gap-3 mb-1"><span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{p.n}</span><Bdg>{p.tm}</Bdg></div><CrdT className="text-xl">{p.t}</CrdT><CrdD className="text-base font-medium text-slate-700 mt-1">{p.l}</CrdD></CrdH><CrdC><p className="text-sm text-slate-500">{p.d}</p>{p.leo&&<div className="mt-4 leo-card bg-sky-50 border border-sky-100 rounded-lg p-5"><div className="flex items-center gap-2 mb-2"><Dot c="bg-sky-500"/><h4 className="text-sm font-bold text-sky-900">Leo — Revenue Intelligence</h4></div><p className="text-sm text-sky-800/70">{p.leo}</p></div>}{p.subs&&<div className="mt-4 grid md:grid-cols-2 gap-3">{p.subs.map(([t,d])=><div key={t} className={`rounded-lg p-4 ${t.includes("Leo")?"bg-sky-50 border border-sky-100":"bg-slate-50"}`}><h4 className={`text-sm font-semibold mb-1 ${t.includes("Leo")?"text-sky-900":"text-slate-900"}`}>{t}</h4><p className={`text-xs ${t.includes("Leo")?"text-sky-800/60":"text-slate-500"}`}>{d}</p></div>)}</div>}</CrdC></Crd></FadeUp>)}</div></Cx></section></>;}
+
+function ThinkingPage(){const[f,sF]=useState("All");const ps=["All","Frameworks","Founder Ed","Market","Succession","Mittelstand"];const list=f==="All"?ARTICLES:ARTICLES.filter(a=>a.p===f);return <><PH tag="Our Thinking" title="Guides for selling your business in Australia." sub="Succession planning, EBITDA valuations, operational playbooks."/><section className="py-16"><Cx><FadeUp><div className="flex gap-2 flex-wrap mb-8">{ps.map(p=><Btn key={p} size="sm" variant={f===p?"default":"outline"} className="fm-btn-press" onClick={()=>sF(p)}>{p}</Btn>)}</div></FadeUp><div className="space-y-4">{list.map((a,i)=><FadeUp key={a.t} delay={i*60}><Crd className="fm-card-lift transition-all duration-300"><CrdH><div className="flex items-center gap-2 mb-1"><Bdg>{a.p}</Bdg><span className="text-xs text-slate-400">{a.d} · {a.r}</span></div><CrdT className="text-lg leading-snug">{a.t}</CrdT></CrdH><CrdC><p className="text-sm text-slate-500">{a.ex}</p></CrdC></Crd></FadeUp>)}</div></Cx></section></>;}
+
+function TeamPage(){return <><PH tag="The Team" title="Operators, not consultants."/><section className="py-16 overflow-hidden"><Cx><FadeUp><div className="flex items-center gap-3 mb-5"><h3 className="text-lg font-bold text-slate-900">Investment Team</h3><a href={C.li.co} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-sky-700 transition-colors"><LiIco/></a></div></FadeUp><div className="grid md:grid-cols-2 gap-5 mb-14">{TEAM_I.map((t,i)=><FadeUp key={t.n} delay={(i+1)*120}><TC t={t}/></FadeUp>)}</div><FadeUp delay={100}><h3 className="text-lg font-bold text-slate-900 mb-5">Operating Team</h3></FadeUp><div className="grid md:grid-cols-2 gap-5">{TEAM_O.map((t,i)=><FadeUp key={t.n} delay={100+(i+1)*120}><TC t={t}/></FadeUp>)}</div></Cx></section></>;}
+
+function FoundersPage({go}){return <><PH tag="For Business Owners" title="Sell your business to operators who build." sub="Your exit, your terms, your timeline."/><section className="dark-section py-20"><Cx><SH dark tag="Deal structure" title="What the economics look like when you sell."/><FadeUp><div className="grid md:grid-cols-2 gap-8"><div className="text-base text-white/70 leading-relaxed space-y-4"><p>Sell a portion, retain a meaningful stake. Cash at completion plus upside.</p><p>Typical: 51–80% acquisition, founder retains 20–49% equity with continued role.</p></div><div className="space-y-3">{[["Holding period","5–7 years. No forced exit."],["Your role","Most founders stay."],["Support included","Leo, systems, strategy. No fees."],["Tax","CGT optimisation with your accountant."]].map(([t,d])=><div key={t} className="bg-white/5 border border-white/10 rounded-lg p-4"><h4 className="text-sm font-semibold text-white mb-0.5">{t}</h4><p className="text-xs text-white/40">{d}</p></div>)}</div></div></FadeUp></Cx></section>
+
+<section className="py-20 overflow-hidden"><Cx><SH tag="~12 weeks to sell your business" title="First meeting to completion."/><TL steps={[{time:"Wk 1–2",t:"Conversation & NDA",d:"Meet, share info, explore fit."},{time:"Wk 3–4",t:"Non-Binding Offer",d:"Clear LOI."},{time:"Wk 5–10",t:"Due Diligence",d:"4–6 weeks. Focused."},{time:"Wk 11–12",t:"Completion",d:"Money moves. Partnership begins."}]}/></Cx></section>
+
+<section className="py-20 bg-slate-50 overflow-hidden"><Cx><SH tag="Is selling to PE right?" title="Honest signals."/><div className="grid md:grid-cols-2 gap-5"><SlideL><Crd className="h-full border-t-[3px] border-t-emerald-600"><CrdH><CrdT className="text-emerald-800">Good fit</CrdT></CrdH><CrdC><div className="space-y-2">{["Profitable but plateaued","Want liquidity, plan to stay","Need operational support","Planning succession"].map(t=><div key={t} className="flex items-start gap-2 text-sm text-slate-600"><span className="text-emerald-500 shrink-0 mt-0.5">✓</span>{t}</div>)}</div></CrdC></Crd></SlideL><SlideR delay={100}><Crd className="h-full border-t-[3px] border-t-slate-300"><CrdH><CrdT className="text-slate-500">Not our sweet spot</CrdT></CrdH><CrdC><div className="space-y-2">{["100% exit now","Not yet profitable","Not open to change","Full control, no input"].map(t=><div key={t} className="flex items-start gap-2 text-sm text-slate-500"><span className="text-slate-300 shrink-0 mt-0.5">×</span>{t}</div>)}</div></CrdC></Crd></SlideR></div></Cx></section>
+
+<section className="py-20"><Cx><SH tag="FAQ" title="Questions business owners ask before selling."/><Acc items={FAQ}/></Cx></section>
+
+<section className="py-16"><Cx><CTABlock title="Ready to explore selling your business?" sub="Confidential. No commitments."><Btn variant="secondary" size="lg" className="fm-btn-lift" onClick={()=>go("contact")}>Start a Conversation</Btn><Btn variant="outline" size="lg" className="fm-btn-lift" onClick={()=>go("advisers")} style={{color:"white",borderColor:"rgba(255,255,255,.2)"}}>For Advisers</Btn></CTABlock></Cx></section></>;}
+
+function AdvisersPage({go}){
+  const[qs,sQs]=useState(0),[qd,sQd]=useState({}),[qr,sQr]=useState(null);
+  const pick=(k,v)=>{const nd={...qd,[k]:v};sQd(nd);if(k==="growing"){sQs(5);setTimeout(()=>{const iss=[];if(nd.geo==="Other")iss.push("Geography outside focus");if(nd.ebitda==="<$1M")iss.push("EBITDA below minimum");if(nd.ebitda==="$10M+")iss.push("Above range (worth discussing)");if(["Mining","Property","Agriculture"].includes(nd.sector))iss.push(nd.sector+" outside focus");if(nd.growing==="Declining")iss.push("Declining without thesis");sQr(iss.length===0?{fit:true}:{fit:false,r:iss});sQs(6);},400);}else sQs(s=>s+1);};
+  const qf=(label,opts,key)=><div className="fm-step-enter"><h4 className="text-sm font-semibold text-slate-900 mb-3">{label}</h4><div className="grid grid-cols-2 gap-2">{opts.map(o=><button key={o} onClick={()=>pick(key,o)} className="fm-btn-lift text-left rounded-lg border border-slate-200 px-4 py-3 text-sm text-slate-600 hover:border-slate-300 transition-all">{o}</button>)}</div>{qs>0&&<button className="text-xs text-slate-400 mt-3 hover:text-slate-600" onClick={()=>sQs(s=>s-1)}>← Back</button>}</div>;
+  const reset=()=>{sQs(0);sQd({});sQr(null);};
+
+  return <><PH tag="For Business Brokers & Advisers" title="You have 90 seconds. Here's our buy box." sub="Everything to evaluate fit and send a deal."/>
+
+  <section className="py-16 bg-slate-50"><Cx><SH tag="Criteria" title="The buy box."/><ScaleUp><BuyBoxGrid/></ScaleUp></Cx></section>
+
+  <section className="py-20 overflow-hidden"><Cx><SH tag="Beyond numbers" title="What gets us excited about a business for sale."/><div className="grid md:grid-cols-2 gap-5"><SlideL><Crd className="h-full border-t-[3px] border-t-emerald-600"><CrdH><CrdT className="text-emerald-800">Excited</CrdT></CrdH><CrdC><div className="space-y-2">{["Strong #2 / management layer","Recurring revenue","Tech-enabled or transformation potential","Clear growth levers","Ops improvement → EBITDA"].map(t=><div key={t} className="flex items-start gap-2 text-sm text-slate-600"><span className="text-emerald-500 shrink-0 mt-0.5">✓</span>{t}</div>)}</div></CrdC></Crd></SlideL><SlideR delay={100}><Crd className="h-full border-t-[3px] border-t-amber-500"><CrdH><CrdT className="text-amber-800">Pause</CrdT></CrdH><CrdC><div className="space-y-2">{["Customer concentration >40%","Heavy founder dependency","Declining, no turnaround","Heavy capex","Regulatory outside expertise"].map(t=><div key={t} className="flex items-start gap-2 text-sm text-slate-600"><span className="text-amber-500 shrink-0 mt-0.5">!</span>{t}</div>)}</div></CrdC></Crd></SlideR></div></Cx></section>
+
+  <section className="py-20 bg-slate-50 overflow-hidden"><Cx><SH tag="Process" title="How to send a deal to B8N."/><TL steps={PROCESS}/></Cx></section>
+
+  <section className="dark-section py-20 overflow-hidden"><Cx><SH dark tag="Commitments" title="How we work with business brokers."/><Stagger stagger={70} className="space-y-3 max-w-2xl">{[["We respect your mandate.","Work through you."],["Honour fee arrangements.","Sign upfront."],["Won't waste time.","Fast no > slow maybe."],["Strict confidentiality.","Never contact your client without consent."],["We close deals.","Committed capital. 10–14 weeks."]].map(([t,d])=><div key={t} className="flex items-start gap-3"><span className="text-emerald-400 mt-0.5 shrink-0">✓</span><div><span className="text-white font-semibold text-sm">{t}</span><span className="text-white/40 text-sm"> {d}</span></div></div>)}</Stagger></Cx></section>
+
+  <section className="py-20 overflow-hidden"><Cx><SH tag="Quick check" title="Is this deal right for B8N?" sub="5 questions. Instant answer."/><ScaleUp><Crd className="max-w-lg mx-auto"><CrdC className="p-8"><div className="flex gap-1.5 mb-6">{[1,2,3,4,5,6].map(s=><div key={s} className={`flex-1 h-1 rounded-full transition-all duration-500 ${qs>=s?"bg-slate-900":"bg-slate-200"}`}/>)}</div>
+    {qs===0&&qf("Business location?",["Australia","New Zealand","DACH","Other"],"geo")}
+    {qs===1&&qf("Annual EBITDA?",["<$1M","$1–3M","$3–5M","$5–10M","$10M+"],"ebitda")}
+    {qs===2&&qf("Sector?",["Tech/SaaS","Business Services","Healthcare","Industrial","Consumer","Mining","Property","Agriculture"],"sector")}
+    {qs===3&&qf("Transaction?",["Growth capital","Succession","MBO","Full exit"],"type")}
+    {qs===4&&qf("Profitable & growing?",["Yes","Stable","Declining"],"growing")}
+    {qs===5&&<div className="text-center py-8"><div className="fm-pulse w-4 h-4 rounded-full bg-sky-500 mx-auto"/></div>}
+    {qs===6&&qr&&<div className="fm-step-enter text-center">{qr.fit?<><div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 text-xl flex items-center justify-center mx-auto mb-4">✓</div><h4 className="text-base font-bold text-slate-900 mb-2">Looks like a fit.</h4><p className="text-sm text-slate-500 mb-4">Send teaser to <span className="font-semibold text-sky-800">deals@b8n.com</span></p></>:<><div className="w-12 h-12 rounded-full bg-amber-50 text-amber-600 text-xl flex items-center justify-center mx-auto mb-4">!</div><h4 className="text-base font-bold text-slate-900 mb-2">May be outside criteria.</h4><div className="space-y-1 mb-4">{qr.r.map(r=><p key={r} className="text-sm text-slate-500">{r}</p>)}</div></>}<Btn variant="outline" size="sm" className="fm-btn-lift mt-2" onClick={reset}>Start over</Btn></div>}
+  </CrdC></Crd></ScaleUp></Cx></section>
+
+  <section className="py-16 bg-slate-50"><Cx><div className="grid md:grid-cols-2 gap-8"><FadeUp><h3 className="text-lg font-bold text-slate-900 mb-4">Deal contact</h3><Crd className="fm-card-lift transition-all duration-300"><CrdC className="py-6"><div className="flex items-center gap-4 mb-4"><div className="w-14 h-14 rounded-full bg-slate-900 text-white text-base font-bold flex items-center justify-center shrink-0">MB</div><div><div className="flex items-center gap-2"><h4 className="text-base font-bold text-slate-900">Markus Binder</h4><a href={C.li.mb} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-sky-700 transition-colors"><LiIco/></a></div><p className="text-sm text-sky-800 font-semibold">Co-founder & MD</p></div></div><Sep className="my-4"/><div className="space-y-2 text-sm"><div className="flex justify-between"><span className="text-slate-500">Deals</span><span className="font-medium text-slate-900">deals@b8n.com</span></div><div className="flex justify-between"><span className="text-slate-500">Direct</span><span className="font-medium text-slate-900">markus@b8n.com</span></div><div className="flex justify-between"><span className="text-slate-500">Mobile</span><span className="font-medium text-slate-900">+61 410 964 458</span></div></div><Sep className="my-4"/><p className="text-xs text-slate-400 italic">48 hours. A fast no is better than a slow no.</p></CrdC></Crd></FadeUp><FadeUp delay={150}><h3 className="text-lg font-bold text-slate-900 mb-4">One-page overview</h3><Crd className="fm-card-lift transition-all duration-300"><CrdC className="py-6"><p className="text-sm text-slate-600 leading-relaxed mb-4">Criteria, process, contact. One page. Forward to clients.</p><Btn className="w-full fm-btn-lift">Download PDF</Btn><p className="text-xs text-slate-400 text-center mt-3">No email. No signup.</p></CrdC></Crd></FadeUp></div></Cx></section></>;
 }
 
-function ServicesPage({go}){
-  return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"36px 20px 28px",textAlign:"center"}},
-      React.createElement("h1",{style:{color:"#fff",fontSize:24,fontWeight:700,margin:"0 0 8px"}},"Services"),
-      React.createElement("p",{style:{color:N5,fontSize:13}},"Beyond acquisition \u2014 we help business owners sell, raise capital, and grow.")),
-    React.createElement(Sec,null,
-      React.createElement("div",{style:{marginBottom:32}},
-        React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10,marginBottom:10}},
-          React.createElement("div",{style:{width:32,height:32,borderRadius:8,background:N6,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,color:N2,fontWeight:700}},"01"),
-          React.createElement("h2",{style:{fontSize:17,fontWeight:700,color:N1,margin:0}},"Sell your business")),
-        React.createElement("p",{style:{fontSize:13,color:"#6b7280",lineHeight:1.7,margin:"0 0 14px"}},"Full brokerage service. B8N\u2019s dual role as investor and broker means we understand both sides of the table."),
-        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:6}},
-          [{s:"Up to $2M",r:"5.0%"},{s:"$2M\u2013$5M",r:"4.0%"},{s:"$5M\u2013$10M",r:"3.0%"},{s:"$10M\u2013$25M",r:"2.5%"},{s:"$25M+",r:"2.0%"}].map(function(t){return React.createElement("div",{key:t.s,style:{background:"#f7f9fc",borderRadius:8,padding:"8px 6px",textAlign:"center"}},React.createElement("div",{style:{fontSize:16,fontWeight:700,color:N2}},t.r),React.createElement("div",{style:{fontSize:9,color:"#6b7280"}},t.s))})
-        ),
-        React.createElement("div",{style:{fontSize:10,color:"#9ca3af",marginTop:6}},"Success fee only. No upfront cost. Minimum $50K.")
-      ),
-      React.createElement("div",{style:{marginBottom:32}},
-        React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10,marginBottom:10}},
-          React.createElement("div",{style:{width:32,height:32,borderRadius:8,background:N6,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,color:N2,fontWeight:700}},"02"),
-          React.createElement("h2",{style:{fontSize:17,fontWeight:700,color:N1,margin:0}},"Raise capital")),
-        React.createElement("p",{style:{fontSize:13,color:"#6b7280",lineHeight:1.7,margin:"0 0 14px"}},"B8N bridges the gap between working mechanics and a bankable investment case."),
-        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:6}},
-          [{s:"Equity raise",f:"2\u20134%",n:"Success fee"},{s:"Debt advisory",f:"1\u20132%",n:"Of facility"},{s:"Materials",f:"$10\u201330K",n:"Fixed fee"},{s:"Ops improvement",f:"$5\u201315K/mo",n:"3\u20136 months"}].map(function(x){return React.createElement("div",{key:x.s,style:{background:"#f7f9fc",borderRadius:8,padding:"8px 6px",textAlign:"center"}},React.createElement("div",{style:{fontSize:15,fontWeight:700,color:"#d97706"}},x.f),React.createElement("div",{style:{fontSize:10,fontWeight:600,color:N1}},x.s),React.createElement("div",{style:{fontSize:9,color:"#6b7280"}},x.n))})
-        )
-      ),
-      React.createElement("div",{style:{marginBottom:24}},
-        React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10,marginBottom:10}},
-          React.createElement("div",{style:{width:32,height:32,borderRadius:8,background:N6,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,color:N2,fontWeight:700}},"03"),
-          React.createElement("h2",{style:{fontSize:17,fontWeight:700,color:N1,margin:0}},"Growth advisory")),
-        React.createElement("p",{style:{fontSize:13,color:"#6b7280",lineHeight:1.7,margin:"0 0 14px"}},"AI-powered revenue engineering at $3,500/month \u2014 a no-brainer for mid-market operators. Same methodology proven across 150+ enterprises at BuildingRadar."),
-        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}},
-          [{v:"$3.5K",l:"Monthly retainer"},{v:"150+",l:"Enterprises served"},{v:"\u20AC2B+",l:"Pipeline generated"},{v:"3x",l:"Avg. growth"}].map(function(x){return React.createElement("div",{key:x.l,style:{background:N6,borderRadius:8,padding:"10px 6px",textAlign:"center"}},React.createElement("div",{style:{fontSize:16,fontWeight:700,color:N2}},x.v),React.createElement("div",{style:{fontSize:9,color:"#6b7280"}},x.l))})
-        )
-      ),
-      React.createElement("div",{style:{background:N6,borderRadius:10,padding:16,textAlign:"center"}},
-        React.createElement("div",{style:{fontSize:14,fontWeight:700,color:N1,marginBottom:4}},"Start with a valuation"),
-        React.createElement("div",{style:{fontSize:12,color:"#6b7280",marginBottom:10}},"Whether you\u2019re selling, raising capital, or looking to grow."),
-        React.createElement("div",{onClick:function(){go("valuation")},style:{display:"inline-block",padding:"10px 22px",borderRadius:8,background:N2,color:"#fff",fontSize:13,fontWeight:600,cursor:"pointer"}},"Get free valuation")
-      )
-    )
-  );
+/* ============================================================
+   CONTACT — HubSpot-ready
+   ============================================================ */
+function ContactPage({go}){
+  const[sent,setSent]=useState(false),[sub,setSub]=useState(false);
+  const fd=useRef({});
+  const ic="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none focus:border-sky-700 focus:ring-2 focus:ring-sky-100 transition-all duration-200";
+  const set=(k,v)=>{fd.current[k]=v};
+  const send=async()=>{setSub(true);const f=fd.current;await hsSubmit(C.hsFormContact,[{name:"firstname",value:f.firstname||""},{name:"company",value:f.company||""},{name:"email",value:f.email||""},{name:"phone",value:f.phone||""},{name:"annual_ebitda",value:f.annual_ebitda||""},{name:"message",value:f.message||""}],"contact_page");setSub(false);setSent(true);};
+
+  return <><PH tag="Contact" title="Start a confidential conversation." sub="Whether you're selling, exploring, or referring a client."/><section className="py-16"><Cx><div className="grid md:grid-cols-5 gap-12"><div className="md:col-span-3"><ScaleUp><Crd><CrdC className="p-8">{sent?<div className="text-center py-10 fm-step-enter"><div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-600 text-2xl flex items-center justify-center mx-auto mb-4">✓</div><h3 className="text-lg font-bold text-slate-900 mb-2">Message received.</h3><p className="text-sm text-slate-500 mb-4">We respond within 24 hours.</p><Btn variant="outline" size="sm" className="fm-btn-lift" onClick={()=>{setSent(false);fd.current={}}}>Send another</Btn></div>:<div className="space-y-4 fm-step-enter"><div className="grid grid-cols-2 gap-3"><label className="block"><span className="block text-xs font-semibold text-slate-600 mb-1.5">Name</span><input className={ic} name="firstname" onChange={e=>set("firstname",e.target.value)}/></label><label className="block"><span className="block text-xs font-semibold text-slate-600 mb-1.5">Business</span><input className={ic} name="company" onChange={e=>set("company",e.target.value)}/></label></div><div className="grid grid-cols-2 gap-3"><label className="block"><span className="block text-xs font-semibold text-slate-600 mb-1.5">Email</span><input className={ic} name="email" type="email" onChange={e=>set("email",e.target.value)}/></label><label className="block"><span className="block text-xs font-semibold text-slate-600 mb-1.5">Phone</span><input className={ic} name="phone" onChange={e=>set("phone",e.target.value)}/></label></div><label className="block"><span className="block text-xs font-semibold text-slate-600 mb-1.5">Annual EBITDA</span><select className={ic} name="annual_ebitda" onChange={e=>set("annual_ebitda",e.target.value)}><option value="">Select...</option><option>&lt;$1M</option><option>$1–3M</option><option>$3–5M</option><option>$5–10M</option><option>$10M+</option></select></label><label className="block"><span className="block text-xs font-semibold text-slate-600 mb-1.5">Message</span><textarea className={`${ic} h-28 resize-none`} name="message" onChange={e=>set("message",e.target.value)}/></label><Btn className="w-full fm-btn-lift" onClick={send} disabled={sub}>{sub?"Sending...":"Send Message"}</Btn><p className="text-xs text-slate-400 text-center">24-hour response. Fully confidential.</p></div>}</CrdC></Crd></ScaleUp></div><div className="md:col-span-2"><FadeUp delay={200}><div className="space-y-6"><div><h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">Business owners</h4><p className="text-sm text-slate-700 font-medium">founders@b8n.com</p></div><div><h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">Deals & brokers</h4><p className="text-sm text-slate-700 font-medium">deals@b8n.com</p></div><div><h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">Phone</h4><p className="text-sm text-slate-700">+61 410 964 458</p></div><div><h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">Office</h4><p className="text-sm text-slate-600">Level 4, 233 Castlereagh St<br/>Sydney NSW 2000</p></div><Sep/><div className="flex items-center gap-3"><a href={C.li.co} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-sky-700 transition-colors"><LiIco/></a><span className="text-sm text-slate-500">Follow B8N on LinkedIn</span></div><Btn variant="outline" size="sm" className="fm-btn-lift w-full" onClick={()=>go("advisers")}>For Advisers page</Btn></div></FadeUp></div></div></Cx></section></>;
 }
 
-function OpportunitiesPage({go}){
-  var s=useState(null),sel=s[0],setSel=s[1];
-  var f=useState("All"),flt=f[0],setFlt=f[1];
-  var filtered=LISTINGS.filter(function(l){return flt==="All"||l.sector===flt});
-  if(sel)return React.createElement(ListingDetail,{listing:sel,onBack:function(){setSel(null)}});
-  return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"36px 20px 28px",textAlign:"center"}},
-      React.createElement("h1",{style:{color:"#fff",fontSize:24,fontWeight:700,margin:"0 0 8px"}},"Opportunities"),
-      React.createElement("p",{style:{color:N5,fontSize:13}},"Vetted businesses. NDA required for full IM.")),
-    React.createElement(Sec,null,
-      React.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}},
-        React.createElement("span",{style:{fontSize:14,fontWeight:600,color:N1}},filtered.length+" active"),
-        React.createElement("select",{value:flt,onChange:function(e){setFlt(e.target.value)},style:Object.assign({},inp,{width:180,padding:"7px 10px",fontSize:11})},
-          React.createElement("option",null,"All"),React.createElement("option",null,"IT & Cybersecurity"),React.createElement("option",null,"Essential Services"),React.createElement("option",null,"Waste Management"),React.createElement("option",null,"Data Centres"),React.createElement("option",null,"Construction"))
-      ),
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}},
-        filtered.map(function(l){return React.createElement(Cd,{key:l.id,onClick:function(){setSel(l)}},
-          React.createElement("div",{style:{fontSize:14,fontWeight:600,color:N1}},l.name),
-          React.createElement("div",{style:{fontSize:10,color:"#9ca3af",marginBottom:8}},l.blind," \u00B7 ",l.loc),
-          React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:4}},
-            [{l:"Revenue",v:l.rev},{l:"EBITDA",v:l.ebitda},{l:"Margin",v:l.m},{l:"Asking",v:l.asking}].map(function(x){return React.createElement("div",{key:x.l},React.createElement("div",{style:{fontSize:9,color:"#9ca3af"}},x.l),React.createElement("div",{style:{fontSize:13,fontWeight:600,color:N1}},x.v))})
-          ),
-          React.createElement("div",{style:{marginTop:8,fontSize:10,color:N2,fontWeight:500}},"View details \u2192")
-        )})
-      )
-    )
-  );
-}
+/* ============================================================
+   FOOTER
+   ============================================================ */
+function Footer({go}){return <footer className="bg-slate-900 pt-14 pb-8"><Cx><div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10"><div className="col-span-2 md:col-span-1"><span className="block text-2xl font-extrabold text-white tracking-tight mb-2">B8N</span><p className="text-sm text-slate-400 mb-3">We build companies.<br/>Not just portfolios.</p><a href={C.li.co} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm"><LiIco/><span>LinkedIn</span></a></div><div><h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Navigate</h4>{[["home","Home"],["why","Why B8N"],["build","How We Build"],["thinking","Our Thinking"]].map(([k,l])=><button key={k} onClick={()=>go(k)} className="block text-sm text-slate-400 hover:text-white transition-colors py-1">{l}</button>)}</div><div><h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">For You</h4>{[["team","The Team"],["founders","Sell Your Business"],["advisers","For Advisers"],["contact","Contact"]].map(([k,l])=><button key={k} onClick={()=>go(k)} className="block text-sm text-slate-400 hover:text-white transition-colors py-1">{l}</button>)}</div><div><h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Deals</h4><p className="text-sm text-slate-400 mb-1">deals@b8n.com</p><p className="text-sm text-slate-400 mb-1">founders@b8n.com</p><p className="text-sm text-slate-400 mb-3">+61 410 964 458</p><p className="text-xs text-slate-500">Level 4, 233 Castlereagh St, Sydney</p></div></div><Sep className="bg-white/10 mb-5" style={{background:"rgba(255,255,255,.08)"}}/><div className="flex flex-wrap justify-between items-center gap-4"><p className="text-xs text-slate-500">© 2026 B8N Pty Ltd</p><div className="flex gap-4 text-xs text-slate-500"><span className="hover:text-white transition-colors cursor-pointer">Privacy</span><a href={C.li.co} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a></div></div></Cx></footer>;}
 
-function ResearchPage({go}){
-  var s=useState(null),sel=s[0],setSel=s[1];
-  if(sel)return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"20px 20px 28px"}},React.createElement("div",{style:{maxWidth:720,margin:"0 auto"}},
-      React.createElement("div",{onClick:function(){setSel(null)},style:{fontSize:11,color:N5,cursor:"pointer",marginBottom:10}},"\u2190 All research"),
-      React.createElement("div",{style:{fontSize:10,color:N5,marginBottom:6}},sel.sector," \u00B7 ",sel.date),
-      React.createElement("h1",{style:{color:"#fff",fontSize:20,fontWeight:700,margin:0,lineHeight:1.3}},sel.title)
-    )),
-    React.createElement(Sec,null,
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8,marginBottom:20}},
-        sel.metrics.map(function(m){return React.createElement("div",{key:m.l,style:{background:"#f7f9fc",borderRadius:8,padding:"10px 8px",textAlign:"center"}},React.createElement("div",{style:{fontSize:16,fontWeight:700,color:N1}},m.v),React.createElement("div",{style:{fontSize:9,color:"#9ca3af",textTransform:"uppercase"}},m.l))})
-      ),
-      React.createElement("p",{style:{fontSize:13,color:"#374151",lineHeight:1.7,margin:"0 0 20px"}},sel.summary),
-      React.createElement("div",{style:{background:"#f7f9fc",borderRadius:8,padding:14,marginBottom:20}},
-        React.createElement("div",{style:{fontSize:12,fontWeight:600,color:N1,margin:"0 0 8px"}},"Sources"),
-        sel.sources.map(function(src,i){return React.createElement("div",{key:i,style:{fontSize:11,color:"#6b7280",marginBottom:4,paddingLeft:10,borderLeft:"2px solid "+N3+"30"}},src)})
-      ),
-      React.createElement("div",{onClick:function(){go("valuation")},style:{background:N6,borderRadius:10,padding:14,cursor:"pointer"}},
-        React.createElement("div",{style:{fontSize:13,fontWeight:600,color:N1}},"Own a business in this sector?"),
-        React.createElement("div",{style:{fontSize:11,color:N2}},"Get a free valuation \u2192"))
-    )
-  );
-  return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"36px 20px 28px",textAlign:"center"}},
-      React.createElement("h1",{style:{color:"#fff",fontSize:24,fontWeight:700,margin:"0 0 8px"}},"Research"),
-      React.createElement("p",{style:{color:N5,fontSize:13}},"AI-powered weekly insights.")),
-    React.createElement(Sec,null,
-      RESEARCH.map(function(r){return React.createElement("div",{key:r.id,onClick:function(){setSel(r)},style:{padding:"16px 0",borderBottom:"1px solid #f3f4f6",cursor:"pointer"}},
-        React.createElement("div",{style:{display:"flex",gap:8,alignItems:"center",marginBottom:4}},
-          React.createElement("span",{style:{fontSize:9,padding:"2px 6px",borderRadius:3,background:N6,color:N2,fontWeight:600}},"AI"),
-          React.createElement("span",{style:{fontSize:10,color:"#9ca3af"}},r.date),
-          React.createElement("span",{style:{fontSize:10,color:r.color,fontWeight:500}},r.sector)),
-        React.createElement("div",{style:{fontSize:14,fontWeight:600,color:N1,marginBottom:6}},r.title),
-        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:6}},
-          r.metrics.map(function(m){return React.createElement("div",{key:m.l},React.createElement("div",{style:{fontSize:9,color:"#9ca3af"}},m.l),React.createElement("div",{style:{fontSize:12,fontWeight:600,color:N1}},m.v))}))
-      )}),
-      React.createElement("div",{style:{background:"#f7f9fc",borderRadius:10,padding:16,marginTop:20}},
-        React.createElement("div",{style:{fontSize:14,fontWeight:700,color:N1,marginBottom:4}},"Weekly insights by email"),
-        React.createElement("div",{style:{fontSize:12,color:"#6b7280",marginBottom:10}},"Sector analysis, valuation benchmarks, deal trends."),
-        React.createElement("div",{style:{display:"flex",gap:8,maxWidth:360}},
-          React.createElement("input",{placeholder:"Email",style:Object.assign({},inp,{flex:1,fontSize:12})}),
-          React.createElement("div",{style:{padding:"10px 16px",borderRadius:8,background:N2,color:"#fff",fontSize:12,fontWeight:600,cursor:"pointer"}},"Subscribe"))
-      )
-    ),
-    React.createElement(Sec,{alt:true},
-      React.createElement(H2,null,"Sector reports"),
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:10}},
-        SECTORS.map(function(sec){return React.createElement(Cd,{key:sec.id,onClick:function(){go("sector_"+sec.id)}},
-          React.createElement("div",{style:{display:"flex",alignItems:"center",gap:8,marginBottom:6}},
-            React.createElement("div",{style:{width:22,height:22,borderRadius:6,background:sec.bg,display:"flex",alignItems:"center",justifyContent:"center",color:sec.color,fontSize:10}},sec.icon),
-            React.createElement("span",{style:{fontSize:13,fontWeight:600,color:N1}},sec.label)),
-          React.createElement("div",{style:{display:"flex",gap:8,fontSize:10,color:"#6b7280"}},React.createElement("span",null,sec.stats.size),React.createElement("span",null,sec.stats.growth))
-        )})
-      )
-    )
-  );
-}
-
-function SectorDetail({sector,go}){
-  var s=sector;
-  return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"20px 20px 28px"}},React.createElement("div",{style:{maxWidth:720,margin:"0 auto"}},
-      React.createElement("div",{onClick:function(){go("research")},style:{fontSize:11,color:N5,cursor:"pointer",marginBottom:10}},"\u2190 Research"),
-      React.createElement("h1",{style:{color:"#fff",fontSize:22,fontWeight:700,margin:0}},s.label),
-      React.createElement("div",{style:{fontSize:11,color:N5,marginTop:4}},"Sector report \u00B7 Q1 2026")
-    )),
-    React.createElement(Sec,null,
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8,marginBottom:20}},
-        [{l:"Market",v:s.stats.size},{l:"Growth",v:s.stats.growth},{l:"EV/EBITDA",v:s.stats.multiple},{l:"Pipeline",v:s.stats.deals+" deals"}].map(function(x){return React.createElement("div",{key:x.l,style:{background:"#f7f9fc",borderRadius:8,padding:"10px 8px",textAlign:"center"}},React.createElement("div",{style:{fontSize:16,fontWeight:700,color:N1}},x.v),React.createElement("div",{style:{fontSize:9,color:"#9ca3af",textTransform:"uppercase"}},x.l))})
-      ),
-      React.createElement("h2",{style:{fontSize:16,fontWeight:700,color:N1,margin:"0 0 6px"}},"Thesis"),
-      React.createElement("p",{style:{fontSize:13,color:"#6b7280",lineHeight:1.7,margin:"0 0 20px"}},s.thesis),
-      React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,marginBottom:20}},
-        React.createElement("div",null,React.createElement("h3",{style:{fontSize:13,fontWeight:600,color:N1,margin:"0 0 8px"}},"Trends"),s.trends.map(function(t,i){return React.createElement("div",{key:i,style:{display:"flex",gap:6,marginBottom:5,fontSize:12,color:"#6b7280"}},React.createElement("span",{style:{color:"#059669"}},"\u2191"),t)})),
-        React.createElement("div",null,React.createElement("h3",{style:{fontSize:13,fontWeight:600,color:N1,margin:"0 0 8px"}},"Risks"),s.risks.map(function(r,i){return React.createElement("div",{key:i,style:{display:"flex",gap:6,marginBottom:5,fontSize:12,color:"#6b7280"}},React.createElement("span",{style:{color:"#dc2626"}},"!"),r)}))
-      ),
-      React.createElement("div",{onClick:function(){go("valuation")},style:{background:N6,borderRadius:10,padding:14,cursor:"pointer"}},
-        React.createElement("div",{style:{fontSize:13,fontWeight:600,color:N1}},"Own a business in this sector?"),
-        React.createElement("div",{style:{fontSize:11,color:N2}},"Get a free valuation \u2192"))
-    )
-  );
-}
-
-function AboutPage({go}){
-  var team=[
-    {name:"Markus Binder",role:"Co-founder & Managing Director",init:"MB",bio:"Founded Globalways. Built and exited Datacenter One \u2192 AtlasEdge (DigitalBridge / Liberty Global). 20+ years infrastructure, M&A, PE. Transactions \u20AC5M\u2013\u20AC60M. Harvard OPM. YPO."},
-    {name:"Leopold Neuerburg",role:"Co-founder & Managing Director",init:"LN",bio:"Co-founded BuildingRadar \u2014 150+ enterprise customers, \u20AC2B+ pipeline. AI-powered revenue engineering for industrial sectors. LSE, Cambridge."},
-    {name:"Dorian von Freyhold",role:"Director, Operations",init:"DvF",bio:"PE operations. Partnered with PEP, Quadrant, Adamantem, Partners Group. Revenue optimisation, pricing. PhD, UQ."},
-    {name:"Tony Ta",role:"Senior Associate",init:"TT",bio:"M&A execution, financial modelling. Former Acquisition Manager at Mantaro Brands. DD from LOI to SPA. MSc, WHU."},
-  ];
-  return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"36px 20px 28px",textAlign:"center"}},
-      React.createElement("h1",{style:{color:"#fff",fontSize:24,fontWeight:700,margin:"0 0 8px"}},"About"),
-      React.createElement("p",{style:{color:N5,fontSize:13}},"Founded by operators. Backed by conviction.")),
-    React.createElement(Sec,null,
-      React.createElement("p",{style:{fontSize:13,color:"#6b7280",lineHeight:1.7,margin:"0 0 24px"}},"B8N was founded by Markus Binder and Leopold Neuerburg \u2014 two operators who\u2019ve built, scaled, and exited technology-driven businesses across Germany and Australia."),
-      React.createElement(H2,null,"Team"),
-      React.createElement("div",{style:{display:"flex",flexDirection:"column",gap:14,marginBottom:24}},
-        team.map(function(t){return React.createElement("div",{key:t.name,style:{display:"flex",gap:16,padding:16,background:"#f7f9fc",borderRadius:10}},
-          React.createElement("div",{style:{width:52,height:52,borderRadius:26,background:N6,display:"flex",alignItems:"center",justifyContent:"center",fontSize:15,fontWeight:700,color:N2,flexShrink:0}},t.init),
-          React.createElement("div",null,
-            React.createElement("div",{style:{fontSize:14,fontWeight:700,color:N1}},t.name),
-            React.createElement("div",{style:{fontSize:11,color:N2,fontWeight:500,marginBottom:4}},t.role),
-            React.createElement("div",{style:{fontSize:12,color:"#6b7280",lineHeight:1.6}},t.bio))
-        )})
-      ),
-      React.createElement("div",{style:{textAlign:"center",padding:"16px 0",borderTop:"1px solid #f3f4f6"}},
-        React.createElement("div",{style:{marginBottom:8}},React.createElement(Logo,{size:18})),
-        React.createElement("div",{style:{fontSize:12,color:"#6b7280"}},"Level 4, 233 Castlereagh St, Sydney NSW 2000"),
-        React.createElement("div",{style:{fontSize:12,color:"#6b7280"}},"+61 410 964 458 \u00B7 info@b8n.com")
-      )
-    )
-  );
-}
-
-function ValuationPage({go}){
-  var st=useState(0),step=st[0],setStep=st[1];
-  var dd=useState({sector:"",revenue:"",ebitda:"",recurring:RECURRING[0],growth:GROWTH[1],ownerDep:OWNER_DEP[1],years:YEARS[2],state:"NSW",city:"",name:"",email:"",phone:"",biz:"",reason:REASONS[0]}),d=dd[0],setD=dd[1];
-  var rr=useState(null),result=rr[0],setResult=rr[1];
-  var dn=useState(false),done=dn[0],setDone=dn[1];
-  var set=function(k,v){setD(function(p){var n=Object.assign({},p);n[k]=v;return n})};
-  var rev=parseFloat(d.revenue)||0;var ebitda=parseFloat(d.ebitda)||0;
-  var ok=function(){if(step===0)return d.sector&&rev>0&&ebitda>0;if(step===1)return true;if(step===2)return d.name&&d.email&&d.biz;return true};
-  var doCalc=function(){setResult(calcVal({sector:d.sector,revenue:rev,ebitda:ebitda,recurring:d.recurring,growth:d.growth,ownerDep:d.ownerDep,years:d.years}));setStep(3)};
-  var comm=result?commRate(result.central):null;
-
-  return React.createElement("div",null,
-    React.createElement("div",{style:{background:"linear-gradient(135deg,"+N1+",#0e2e52)",padding:"20px 20px 18px"}},React.createElement("div",{style:{maxWidth:460,margin:"0 auto"}},
-      React.createElement("div",{onClick:function(){go("home")},style:{fontSize:11,color:N5,cursor:"pointer",marginBottom:8}},"\u2190 B8N"),
-      React.createElement("h1",{style:{color:"#fff",fontSize:22,fontWeight:700,margin:"0 0 4px"}},"Business valuation"),
-      React.createElement("p",{style:{color:N5,fontSize:12,margin:0}},"Free \u00B7 Confidential \u00B7 2 minutes")
-    )),
-    React.createElement("div",{style:{maxWidth:460,margin:"0 auto",padding:20}},
-      React.createElement("div",{style:{display:"flex",gap:4,marginBottom:22}},[0,1,2,3].map(function(i){return React.createElement("div",{key:i,style:{flex:1,height:3,borderRadius:2,background:i<=step?N2:"#e5e7eb"}})})),
-
-      step===0&&React.createElement("div",null,
-        React.createElement("div",{style:{fontSize:15,fontWeight:700,color:N1,marginBottom:14}},"Your business"),
-        React.createElement("div",{style:{marginBottom:10}},React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:3}},"Sector"),React.createElement("select",{value:d.sector,onChange:function(e){set("sector",e.target.value)},style:sel},React.createElement("option",{value:""},"Select..."),SECTORS.map(function(s){return React.createElement("option",{key:s.id,value:s.id},s.label)}))),
-        React.createElement("div",{style:{display:"flex",gap:8,marginBottom:10}},
-          React.createElement("div",{style:{flex:1}},React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:3}},"Revenue ('000s AUD)"),React.createElement("input",{type:"number",value:d.revenue,onChange:function(e){set("revenue",e.target.value)},placeholder:"5000",style:inp})),
-          React.createElement("div",{style:{flex:1}},React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:3}},"EBITDA ('000s AUD)"),React.createElement("input",{type:"number",value:d.ebitda,onChange:function(e){set("ebitda",e.target.value)},placeholder:"1200",style:inp}))
-        ),
-        rev>0&&ebitda>0&&React.createElement("div",{style:{fontSize:10,color:"#9ca3af",marginBottom:8}},fK(rev)+" revenue \u00B7 "+fK(ebitda)+" EBITDA \u00B7 "+((ebitda/rev)*100).toFixed(0)+"% margin"),
-        React.createElement("div",{style:{marginBottom:14}},React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:3}},"Location"),React.createElement("div",{style:{display:"flex",gap:8}},React.createElement("select",{value:d.state,onChange:function(e){set("state",e.target.value)},style:Object.assign({},sel,{width:80})},["NSW","VIC","QLD","SA","WA","TAS","NT","ACT"].map(function(s){return React.createElement("option",{key:s},s)})),React.createElement("input",{value:d.city,onChange:function(e){set("city",e.target.value)},placeholder:"City",style:inp}))),
-        React.createElement("div",{onClick:ok()?function(){setStep(1)}:undefined,style:Object.assign({},btnS,{opacity:ok()?1:0.35})},"Next")
-      ),
-
-      step===1&&React.createElement("div",null,
-        React.createElement("div",{style:{fontSize:15,fontWeight:700,color:N1,marginBottom:14}},"Profile"),
-        [{k:"recurring",l:"Recurring revenue %",o:RECURRING},{k:"growth",l:"YoY growth",o:GROWTH},{k:"ownerDep",l:"Owner dependency",o:OWNER_DEP},{k:"years",l:"Years operating",o:YEARS}].map(function(f){return React.createElement("div",{key:f.k,style:{marginBottom:10}},React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:3}},f.l),React.createElement("select",{value:d[f.k],onChange:function(e){set(f.k,e.target.value)},style:sel},f.o.map(function(o){return React.createElement("option",{key:o},o)})))}),
-        React.createElement("div",{style:{display:"flex",gap:8}},
-          React.createElement("div",{onClick:function(){setStep(0)},style:{padding:"11px 16px",borderRadius:8,border:"1px solid #d1d5db",fontSize:13,cursor:"pointer",color:"#6b7280"}},"Back"),
-          React.createElement("div",{onClick:doCalc,style:Object.assign({},btnS,{flex:1})},"Calculate"))
-      ),
-
-      step===3&&!done&&result&&React.createElement("div",null,
-        React.createElement("div",{style:{textAlign:"center",marginBottom:6}},
-          React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:4}},"Indicative enterprise value"),
-          React.createElement("div",{style:{fontSize:34,fontWeight:800,color:N2}},fK(result.central)),
-          React.createElement("div",{style:{fontSize:11,color:"#9ca3af",marginTop:2}},fK(result.low)+" \u2013 "+fK(result.high)+" range \u00B7 "+result.multiple.toFixed(1)+"x EBITDA")
-        ),
-        React.createElement("div",{style:{background:"#f7f9fc",borderRadius:8,padding:12,margin:"16px 0",display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,textAlign:"center"}},
-          [{l:"Revenue",v:fK(rev)},{l:"EBITDA",v:fK(ebitda)},{l:"Margin",v:result.margin.toFixed(0)+"%"}].map(function(x){return React.createElement("div",{key:x.l},React.createElement("div",{style:{fontSize:9,color:"#9ca3af"}},x.l),React.createElement("div",{style:{fontSize:13,fontWeight:600,color:N1}},x.v))})
-        ),
-        React.createElement("div",{style:{background:N6,borderRadius:10,padding:16,textAlign:"center",marginBottom:14}},
-          React.createElement("div",{style:{fontSize:14,fontWeight:700,color:N1,marginBottom:4}},"Get the full report"),
-          React.createElement("div",{style:{fontSize:12,color:N2,marginBottom:10}},"Sector benchmarks, comparable transactions, confidential conversation."),
-          React.createElement("div",{onClick:function(){setStep(2)},style:{display:"inline-block",padding:"10px 22px",borderRadius:8,background:N2,color:"#fff",fontSize:13,fontWeight:600,cursor:"pointer"}},"Unlock report \u2014 free")
-        ),
-        React.createElement("div",{style:{textAlign:"center"}},React.createElement("span",{onClick:function(){setStep(0);setResult(null)},style:{fontSize:11,color:"#9ca3af",cursor:"pointer"}},"Start over"))
-      ),
-
-      step===2&&React.createElement("div",null,
-        React.createElement("div",{style:{fontSize:15,fontWeight:700,color:N1,marginBottom:14}},"Your details"),
-        [{k:"name",l:"Name",p:"Full name"},{k:"email",l:"Email",p:"you@company.com"},{k:"phone",l:"Phone",p:"+61..."},{k:"biz",l:"Business name",p:"Company"}].map(function(f){return React.createElement("div",{key:f.k,style:{marginBottom:10}},React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:3}},f.l),React.createElement("input",{value:d[f.k],onChange:function(e){set(f.k,e.target.value)},placeholder:f.p,style:inp}))}),
-        React.createElement("div",{style:{marginBottom:14}},React.createElement("div",{style:{fontSize:11,color:"#6b7280",marginBottom:3}},"What brings you here?"),React.createElement("select",{value:d.reason,onChange:function(e){set("reason",e.target.value)},style:sel},REASONS.map(function(r){return React.createElement("option",{key:r},r)}))),
-        React.createElement("div",{style:{display:"flex",gap:8}},
-          React.createElement("div",{onClick:function(){setStep(3)},style:{padding:"11px 16px",borderRadius:8,border:"1px solid #d1d5db",fontSize:13,cursor:"pointer",color:"#6b7280"}},"Back"),
-          React.createElement("div",{onClick:ok()?function(){setDone(true)}:undefined,style:Object.assign({},btnS,{flex:1,opacity:ok()?1:0.35})},"Get report"))
-      ),
-
-      done&&React.createElement("div",{style:{textAlign:"center",padding:"20px 0"}},
-        React.createElement("div",{style:{width:48,height:48,borderRadius:24,background:"#dcfce7",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 12px",fontSize:22,color:"#059669"}},"\u2713"),
-        React.createElement("h2",{style:{margin:"0 0 6px",fontSize:18,fontWeight:700,color:N1}},"Thank you, "+d.name.split(" ")[0]+"."),
-        React.createElement("p",{style:{fontSize:12,color:"#6b7280",margin:"0 0 14px"}},"Report for "+d.biz+" will be sent to "+d.email+" within 24 hours."),
-        React.createElement("div",{style:{background:N6,borderRadius:8,padding:12}},React.createElement("div",{style:{fontSize:12,fontWeight:600,color:N1}},"A B8N advisor will be in touch"),React.createElement("div",{style:{fontSize:11,color:N2}},"Confidential conversation about your options."))
-      )
-    )
-  );
-}
-
-function Footer({go}){
-  return React.createElement("div",{style:{background:N1,padding:"20px",marginTop:4}},
-    React.createElement("div",{style:{maxWidth:720,margin:"0 auto",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}},
-      React.createElement("div",{onClick:function(){go("home")},style:{cursor:"pointer"}},React.createElement(Logo,{size:16,light:true})),
-      React.createElement("div",{style:{display:"flex",gap:16,fontSize:11,color:N4,opacity:0.7}},
-        [{id:"approach",l:"Approach"},{id:"services",l:"Services"},{id:"opportunities",l:"Opportunities"},{id:"research",l:"Research"},{id:"about",l:"About"}].map(function(x){return React.createElement("span",{key:x.id,onClick:function(){go(x.id)},style:{cursor:"pointer"}},x.l)})
-      )
-    ),
-    React.createElement("div",{style:{maxWidth:720,margin:"10px auto 0",borderTop:"1px solid rgba(255,255,255,0.05)",paddingTop:10,fontSize:10,color:N4,opacity:0.4,textAlign:"center"}},"\u00A9 2026 B8N Pty Ltd. Level 4, 233 Castlereagh St, Sydney NSW 2000 \u00B7 info@b8n.com")
-  );
-}
-
+/* ============================================================
+   APP
+   ============================================================ */
 function App(){
-  var pg=useState("home"),page=pg[0],setPage=pg[1];
-  var topRef=useRef(null);
-  var go=function(p){setPage(p);setTimeout(function(){topRef.current&&topRef.current.scrollIntoView({behavior:"smooth"})},50)};
-  var sectorFromPage=useMemo(function(){
-    if(page.startsWith("sector_"))return SECTORS.find(function(s){return s.id===page.replace("sector_","")})||null;
-    return null;
-  },[page]);
-  var active=sectorFromPage?"sector_detail":page;
+  const[page,setPage]=useState("home");
+  const[tr,sTr]=useState(false);
 
-  return React.createElement("div",{ref:topRef,style:{fontFamily:"-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif",background:"#fff",minHeight:"100vh"}},
-    React.createElement(Nav,{page:sectorFromPage?"research":page,go:go}),
-    active==="home"&&React.createElement(HomePage,{go:go}),
-    active==="approach"&&React.createElement(ApproachPage,{go:go}),
-    active==="services"&&React.createElement(ServicesPage,{go:go}),
-    active==="opportunities"&&React.createElement(OpportunitiesPage,{go:go}),
-    active==="research"&&React.createElement(ResearchPage,{go:go}),
-    active==="sector_detail"&&sectorFromPage&&React.createElement(SectorDetail,{sector:sectorFromPage,go:go}),
-    active==="about"&&React.createElement(AboutPage,{go:go}),
-    active==="valuation"&&React.createElement(ValuationPage,{go:go}),
-    React.createElement(Footer,{go:go})
-  );
+  usePageMeta(page);
+
+  // HubSpot tracking script
+  useEffect(()=>{
+    if(C.hsPortal==="YOUR_PORTAL_ID")return;
+    if(document.getElementById("hs-script"))return;
+    const s=document.createElement("script");s.id="hs-script";s.src=`//js.hs-scripts.com/${C.hsPortal}.js`;s.async=true;s.defer=true;document.body.appendChild(s);
+  },[]);
+
+  const go=useCallback(p=>{
+    if(p===page)return;
+    sTr(true);
+    setTimeout(()=>{setPage(p);window.scrollTo({top:0});requestAnimationFrame(()=>sTr(false));},180);
+  },[page]);
+
+  const pages={home:HomePage,why:WhyPage,build:BuildPage,thinking:ThinkingPage,team:TeamPage,founders:FoundersPage,advisers:AdvisersPage,contact:ContactPage};
+  const Page=pages[page]||HomePage;
+
+  return <div className="min-h-screen bg-white text-slate-900"><Nav page={page} go={go}/><main className={`page-tr ${tr?"page-tr--out":"page-tr--in"}`}><Page go={go}/></main><Footer go={go}/></div>;
 }
 
-ReactDOM.render(React.createElement(App),document.getElementById("root"));
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>
